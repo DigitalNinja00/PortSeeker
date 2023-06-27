@@ -5,7 +5,7 @@
 	C++ para distribuciones linux.</p><br>
 	<img src="./toologo.png"><br>
 	<h2>Comandos</h2>
-	<p>g++ compile.cpp -o prtker</p><br>
+	<p>g++ compile.cpp -o prtker -std=c++11</p><br>
 	<p>sudo ./prtker</p><br>
 </body>
 </html>
