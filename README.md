@@ -7,8 +7,9 @@
 	funciones para peticiones http y https requests GET<br>
 	Arreglos a fallos
 	<img src="./toologo.png" width=500 height=500><br>
-	<h2>Comandos</h2>
-	<p>g++ compile.cpp -o prtker -std=c++11 -lcurl</p><br>
-	<p>sudo ./prtker</p><br>
+	<h2>Comandos si quieres compilarlo</h2>
+	<p>g++ compile.cpp -o prtker -std=c++11 -lcurl<br></p>
+	<h2>Comandos si quieres ejecutarlo directamente</h2><br>
+	<p>chmod +x prtker <br>sudo ./prtker</p>
 </body>
 </html>
