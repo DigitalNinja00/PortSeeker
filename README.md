@@ -6,7 +6,7 @@
 	<h2>Novedades</h2>
 	funciones para peticiones http y https requests GET<br>
 	Arreglos a fallos
-	<img src="./toologo.png" width=100 height=100><br>
+	<img src="./toologo.png" width=500 height=500><br>
 	<h2>Comandos</h2>
 	<p>g++ compile.cpp -o prtker -std=c++11 -lcurl</p><br>
 	<p>sudo ./prtker</p><br>
