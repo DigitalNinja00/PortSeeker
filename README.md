@@ -7,7 +7,7 @@
 	funciones para peticiones http y https requests GET<br>
 	Arreglos a fallos
 	* Libreria para tus programas
-	<img src="./toologo.png" width=500 height=500><br>
+	<img src="./IMG_0385.jpeg" width=500 height=500><br>
 	<h2>Comandos si quieres compilarlo</h2>
 	<p>g++ compile.cpp -o prtker -std=c++11 -lcurl<br></p>
 	<h2>Comandos si quieres ejecutarlo directamente</h2><br>
