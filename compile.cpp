@@ -28,25 +28,26 @@ class Mess{
     public:
     	void help_funtion(){
     		string var[]={"\033[1;31m!!!!!USE ROOT!!!!!",
-    		"\033[0m==USO DE COMANDOS==",
+    		"\033[0m==--Help list==",
     		"-sP | prtker -sP <ip> <port>",
     		"-Bs | prtker -Bs <ip>",
     		"-httpGET | prtker -httpGET <ip or direction>",
     		"-httpsGET | prtker -httpsGET <ip or direction>",
-    		"==INFO DE COMANDOS==",
+    		"==INFO==",
     		"-Bs",
-    		"Hace un escaneo basico de puertos, manda peticiones TCP,",
-    		"desde el puerto 1 hasta el 10,000",
+    		"Do basic port scanner, send petitions TCP,",
+    		"From port 1 to 10,000",
     		"-sP",
-    		"Escaneo de puerto especifico, funciona para escanear un puerto",
-    		"especifico, manda una sola solicitud TCP/IP",
-    		"-httpGET | funciona para hacer peticiones http get a",
-    		"servidores http no funciona para https",
-    		"-httpsGET | funciona para hacer peticiones https get a",
-    		"servidores https y http",
-    		"-httpPOST | funciona para hacer peticiones POST a servidores", 
-    		"-httpSTATUSCODE | funciona para obtener el codigo de estado mediante http",
-    		"-sS | funciona para realzar un escaneo mas silencioso"
+			"Specific port scanning, works to scan a specific port",
+			"sends a single TCP/IP request",
+			"-httpGET | works to make http get requests to",
+			"http servers, does not work for https",
+			"-httpsGET | works to make https get requests to",
+			"https and http servers",
+			"-httpPOST | works to make POST requests to servers",
+			"-httpSTATUSCODE | works to obtain the status code via http",
+			"-sS | works to perform a quieter scan"
+
     	};
     		size_t main = sizeof(var)/sizeof(string);
     		for(int i=0; i<main;i++){
@@ -115,12 +116,12 @@ class Enchufe{
     		hints.ai_socktype = SOCK_STREAM;
 
     		if(getaddrinfo(remoteipaddress, NULL, &hints, &res) != 0){
-    			cout<<"Error al obtener la direccion"<<endl;
+    			cout<<"Error obtaining ip"<<endl;
     			return 1;
     		}
     		char hostname[NI_MAXHOST];
     		if(getnameinfo(res->ai_addr, res->ai_addrlen, hostname, sizeof(hostname), NULL, 0, 0) != 0){
-    			cout<<"Error al obtener hostname"<<endl;
+    			cout<<"Error obtaining hostname"<<endl;
     			return 1;
     		}
     		cout<<"Hostname: "<<remoteipaddress<<" "<<hostname<<endl;
@@ -132,7 +133,7 @@ class Enchufe{
     		comando<<"echo \"direccion mac: $(/usr/sbin/arping -c 1 "<<direccionremota<<" | grep \"from\" | awk \'{print $4}\')\"";
     		int verdad = system(comando.str().c_str());
     		if(verdad!=0){
-    			cout<<"Error al obtener direccion mac"<<endl;
+    			cout<<"Error obtaining MAC address"<<endl;
     		}
     		return 0;
     	}
@@ -140,9 +141,9 @@ class Enchufe{
     		httplib::Client client(sitioweb);
     		auto response = client.Get("/");
     		if(response && response->status == 200){
-    			cout<<"Respuesta : "<<response->body<<endl;
+    			cout<<"Response : "<<response->body<<endl;
     		}else{
-    			cout<<"Error al enviar solicitud"<<endl;
+    			cout<<"Error sending request"<<endl;
     		}
     	}
     	void peticion_https_Get(const char* netinet){
@@ -157,9 +158,9 @@ class Enchufe{
     			curl_easy_setopt(curl, CURLOPT_WRITEDATA, &response);
     			res = curl_easy_perform(curl);
     			if(res!=CURLE_OK){
-    				cout<<"Error en peticion: "<<curl_easy_strerror(res)<<endl;
+    				cout<<"Error on petition: "<<curl_easy_strerror(res)<<endl;
     			}else{
-    				cout<<"Respuesta: \n"<<response<<endl;
+    				cout<<"Response: \n"<<response<<endl;
     			}
     			curl_easy_cleanup(curl);
 
@@ -171,7 +172,7 @@ class Enchufe{
     	int basic_scan(char host[], int number){
     		int sock = socket(AF_INET, SOCK_STREAM, 0); //se crea un socket
     		if(sock == -1){
-    			cout<<"Error al crear socket"<<endl;
+    			cout<<"Error creating socket"<<endl;
     		}
     		//configuracion de la direccion del servidor
     		sockaddr_in serverAddress;
@@ -440,7 +441,7 @@ class Enchufe{
     	int silent_scan(char direccion[], int number){
     		int conector = socket(AF_INET, SOCK_STREAM, 0);
     		if(conector==-1){
-    			cout<<"Error al crear socket"<<endl;
+    			cout<<"Error creating socket"<<endl;
     		}
     		sockaddr_in serverMain;
     		serverMain.sin_family = AF_INET;
@@ -698,7 +699,7 @@ class Enchufe{
     	int port_s_scan(char direc[], int number){
     		int enchufe =  socket(AF_INET, SOCK_STREAM, 0);
     		if(enchufe==-1){
-    			cout<<"Error al crear socket"<<endl;
+    			cout<<"Error creating socket"<<endl;
     		}
     		sockaddr_in serverDick;
     		serverDick.sin_family = AF_INET;
@@ -1199,36 +1200,37 @@ class Enchufe{
 class Alert{
     public:
     	void alert_bc(){
-    		cout<<"Especifique una direccion para uso: -Bs <ip>"<<endl;
-    	}
-    	void alert_sp(){
-    		cout<<"Especifique una direccion y puerto para -sP\nuso: -sP <ip> <port>"<<endl;
-    	}
-    	void alert_sp_b(){
-    		cout<<"Especifique una direccion y puerto para -sP\nuso: -sP <ip> <port>"<<endl;
-    	}
-    	void alert_http_get(){
-    		cout<<"Especifique una direccion para -httpGET\nuso: -httpGET <ip or direction>"<<endl;
-    	}
-    	void alert_https_get(){
-    		cout<<"Especifique una direccion para -httpsGET\nuso: -httpsGET <url>"<<endl;
-    	}
-    	void alert_hp(){
-    		cout<<"Especifique una url para -httpPOST\nuso : -httpPOST <url>"<<endl;
-    	}
-    	void alert_code(){
-    		cout<<"Especifique una url para -httpSTATUSCODE\n uso : -httpSTATUSCODE <url>"<<endl;
-    	}
-    	void alert_ss(){
-    		cout<<"Especifique una direccion para -sS\n uso : -sS <direccion>"<<endl;
-    	}
+    		cout<<"Specify an address for use: -Bs <ip>"<<endl;
+		}	
+		void alert_sp(){
+    		cout<<"Specify an address and port for -sP\nusage: -sP <ip> <port>"<<endl;
+		}
+		void alert_sp_b(){
+    		cout<<"Specify an address and port for -sP\nusage: -sP <ip> <port>"<<endl;
+		}
+		void alert_http_get(){
+    		cout<<"Specify an address for -httpGET\nusage: -httpGET <ip or address>"<<endl;
+		}
+		void alert_https_get(){
+    		cout<<"Specify an address for -httpsGET\nusage: -httpsGET <url>"<<endl;
+		}
+		void alert_hp(){
+    		cout<<"Specify a URL for -httpPOST\nusage: -httpPOST <url>"<<endl;
+		}
+		void alert_code(){
+    		cout<<"Specify a URL for -httpSTATUSCODE\nusage: -httpSTATUSCODE <url>"<<endl;
+		}
+		void alert_ss(){
+    		cout<<"Specify an address for -sS\nusage: -sS <address>"<<endl;
+		}
+
 };
 
 int main(int argc, char *argv[]){
 	//auto inicio = steady_clock::now();
 	
 	if(argc==1){
-		printf("Debe especificar un argumento\n use --help para mas informacion\n");
+		printf("Specify an argument\n use --help for more information\n");
 	}else{
 		if(argc==2){
 			int result;
@@ -1327,8 +1329,8 @@ int main(int argc, char *argv[]){
 					double simplescan = duration.count();
 					double factor = pow(10, 2);
 					double decimal = round(simplescan * factor) / factor;
-					cout<<"PortSeeker done: 10,000 puertos escaneados en "<<fixed<<setprecision(2)<<decimal;
-					cout<<" segundos"<<endl;
+					cout<<"PortSeeker done: 10,000 ports scanned in "<<fixed<<setprecision(2)<<decimal;
+					cout<<" seconds"<<endl;
 
 				}else{
 					int verficador_a = strcmp(argv[1], "-sP");
@@ -1357,8 +1359,8 @@ int main(int argc, char *argv[]){
 							double httpget = duration.count();
 							double factore = pow(10, 2);
 							double decimal_a = round(httpget * factore) / factore;
-							cout<<"PortSeeker done: HTTP_GET en "<<fixed<<setprecision(2)<<decimal_a;
-							cout<<" segundos"<<endl;
+							cout<<"PortSeeker done: HTTP_GET in "<<fixed<<setprecision(2)<<decimal_a;
+							cout<<" seconds"<<endl;
 						}else{
 							int verificador_c = strcmp(argv[1], "-httpsGET");
 							if(verificador_c==0){
@@ -1377,13 +1379,13 @@ int main(int argc, char *argv[]){
 								double httpsget = duration.count();
 								double fatores = pow(10, 2);
 								double decimal_b = round(httpsget * fatores) / fatores;
-								cout<<"PortSeeker done: HTTPS_GET en "<<fixed<<setprecision(2)<<decimal_b;
-								cout<<" segundos"<<endl;
+								cout<<"PortSeeker done: HTTPS_GET in "<<fixed<<setprecision(2)<<decimal_b;
+								cout<<" seconds"<<endl;
 							}else{
 								int var = strcmp(argv[1], "-httpPOST");
 								if(var==0){
 									//AGREGAR FUNCION HTTP POST
-									cout<<"Comando Correcto"<<endl;
+									cout<<"Correct command"<<endl;
 								}else{
 									int log_b = strcmp(argv[1], "-httpSTATUSCODE");
 									if(log_b==0){
@@ -1402,8 +1404,8 @@ int main(int argc, char *argv[]){
 										double httpsget = duration.count();
 										double factores = pow(10, 2);
 										double decimal = round(httpsget * factores) / factores;
-										cout<<"PortSeeker done : HTTPSTATUSCODE en "<<fixed<<setprecision(2)<<decimal;
-										cout<<" segundos"<<endl;
+										cout<<"PortSeeker done : HTTPSTATUSCODE in "<<fixed<<setprecision(2)<<decimal;
+										cout<<" seconds"<<endl;
 									}else{
 										int controlador = strcmp(argv[1], "-sS");
 										if(controlador==0){
@@ -1425,8 +1427,8 @@ int main(int argc, char *argv[]){
 											double httpsget = duration.count();
 											double caracol = pow(10, 2);
 											double valor = round(httpsget * caracol) / caracol;
-											cout<<"PortSeeker done: SilentScan en "<<fixed<<setprecision(2)<<caracol;
-											cout<<" segundos"<<endl;
+											cout<<"PortSeeker done: SilentScan in "<<fixed<<setprecision(2)<<caracol;
+											cout<<" seconds"<<endl;
 										}
 									}
 								}
@@ -1461,8 +1463,8 @@ int main(int argc, char *argv[]){
 						double s_scan_s = duration.count();
 						double factor_s = pow(10, 2);
 						double decimal_ss = round(s_scan_s * factor_s) / factor_s;
-						cout<<"PortSeeker done: 1 puerto escaneado en "<<fixed<<setprecision(2)<<decimal_ss;
-						cout<<" segundos"<<endl;
+						cout<<"PortSeeker done: 1 ports scanned in "<<fixed<<setprecision(2)<<decimal_ss;
+						cout<<" seconds"<<endl;
 					}
 				}				
 			}
