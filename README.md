@@ -1,4 +1,4 @@
-
+<body>
 	<h1>PortSeeker version: 1.4</h1>
 	<h1>Improvements:</h1><br>
 	<p>
@@ -19,3 +19,4 @@
 	<h1>For Arch based distros: </h1><br>
 	<p>pacman -S curl</p><br>
 	<p>g++ compile.cpp -o prtker -std=c++11 -lcurl</p></br>
+</body>
