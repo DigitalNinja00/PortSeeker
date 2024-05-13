@@ -130,7 +130,7 @@ class Enchufe{
     	int getmacaddress(const char* direccionremota){
     		//geta¡macfuntion
     		stringstream comando;
-    		comando<<"echo \"direccion mac: $(/usr/sbin/arping -c 1 "<<direccionremota<<" | grep \"from\" | awk \'{print $4}\')\"";
+    		comando<<"echo \"mac address: $(/usr/sbin/arping -c 1 "<<direccionremota<<" | grep \"from\" | awk \'{print $4}\')\"";
     		int verdad = system(comando.str().c_str());
     		if(verdad!=0){
     			cout<<"Error obtaining MAC address"<<endl;
