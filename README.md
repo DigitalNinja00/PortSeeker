@@ -23,11 +23,11 @@ sudo bash start.sh
 ## Improvements:
 
 ```
->>>New feature for quieter network scans
->>>Feature to obtain server status code
->>>Performance improvement
->>>Code enhancements
->>>Friendlier Banner and UI
+>>> New feature for quieter network scans
+>>> Feature to obtain server status code
+>>> Performance improvement
+>>> Code enhancements
+>>> Friendlier Banner and UI
 ```
 
 ## Authors
