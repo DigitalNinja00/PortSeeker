@@ -1,6 +1,7 @@
-# PortSeeker version: 1.4
+# PortSeeker version: 1.5
 <center>
-    <img src="IMG_0385.jpeg">
+    <img src="IMG_0385.jpeg"><br>
+    <img src="captura.png">
 </center>
 * 
 Port Scanner, opensource and programmed in C++ for linux distros.
@@ -24,6 +25,7 @@ sudo bash start.sh
 ## Improvements:
 
 ```
+>>> New colors on console ***
 >>> New feature for quieter network scans
 >>> Feature to obtain server status code
 >>> Performance improvement
