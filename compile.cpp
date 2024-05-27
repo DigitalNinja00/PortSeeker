@@ -14,6 +14,7 @@
 #include<sstream>
 #include "httplib.h"
 #include <curl/curl.h>
+#include "color.h"
 
 using namespace std;
 using namespace chrono;
@@ -55,19 +56,19 @@ class Mess{
     		}
     	}
     	void version(){
-    		cout<<"PortSeeker version 1.4"<<endl;
+    		cout<<"PortSeeker version 1.5"<<endl;
     	}
     	void principal(){
-    		cout<<"Starting BasicScan PortSeeker 1.4"<<endl;;
+    		cout<<BLUE<<"Starting BasicScan PortSeeker 1.5"<<endl;;
     	}
     	void httpGET_scan(){
-    		cout<<"Starting HTTPGET PortSeeker 1.4"<<endl;
+    		cout<<BLUE<<"Starting HTTPGET PortSeeker 1.5"<<endl;
     	}
     	void code_status(){
-    		cout<<"Starting HTTPSTATUSCODE PortSeeker 1.4"<<endl;
+    		cout<<BLUE<<"Starting HTTPSTATUSCODE PortSeeker 1.5"<<endl;
     	}
     	void banner(){
-    		system("cat ./banner/banner.txt");
+    		system("python3 scripts_python/banner.py");
     	}
     	void http_get_status(string vaca){
     		stringstream log;
@@ -75,7 +76,7 @@ class Mess{
     		system(log.str().c_str());
     	}
     	void silent_scanner(){
-    		cout<<"Starting SilentScan PortSeeker 1.4"<<endl;
+    		cout<<BLUE<<"Starting SilentScan PortSeeker 1.5"<<endl;
     	}
 
 };
@@ -124,13 +125,13 @@ class Enchufe{
     			cout<<"Error obtaining hostname"<<endl;
     			return 1;
     		}
-    		cout<<"Hostname: "<<remoteipaddress<<" "<<hostname<<endl;
+    		cout<<RED<<"Hostname: "<<YELLOW<<remoteipaddress<<GREEN<<" "<<hostname<<RESET<<endl;
     		return 0;
     	}
     	int getmacaddress(const char* direccionremota){
     		//geta¡macfuntion
     		stringstream comando;
-    		comando<<"echo \"mac address: $(/usr/sbin/arping -c 1 "<<direccionremota<<" | grep \"from\" | awk \'{print $4}\')\"";
+    		comando<<"echo \"\\e[0;31mmac address: \\e[1;33m$(/usr/sbin/arping -c 1 "<<direccionremota<<" | grep \"from\" | awk \'{print $4}\')\"";
     		int verdad = system(comando.str().c_str());
     		if(verdad!=0){
     			cout<<"Error obtaining MAC address"<<endl;
@@ -191,247 +192,247 @@ class Enchufe{
     		//cout<<"!->TCP|open!|"<<number<<endl;//host number
     		//function_read_name_tcp(number);
     		//cout<<"!->TCP \\ open!  "<<number<<"  domain"<<endl;
-    		
     		if(number==1){
-    			cout<<"!->TCP \\ open!  "<<number<<"  tcpmux"<<endl;
-    		}
-    		if(number==5){
-    			cout<<"!->TCP \\ open!  "<<number<<"  rje"<<endl;
-    		}
-    		if(number==7){
-    			cout<<"!->TCP \\ open!  "<<number<<"  echo"<<endl;
-    		}
-    		if(number==9){
-    			cout<<"!->TCP \\ open!  "<<number<<"  discard"<<endl;
-    		}
-    		if(number==11){
-    			cout<<"!->TCP \\ open!  "<<number<<"  systat"<<endl;
-    		}
-    		if(number==13){
-    			cout<<"!->TCP \\ open!  "<<number<<"  daytime"<<endl;
-    		}
-    		if(number==17){
-    			cout<<"!->TCP \\ open!  "<<number<<"  qotd"<<endl;
-    		}
-    		if(number==18){
-    			cout<<"!->TCP \\ open!  "<<number<<"  msp"<<endl;
-    		}
-    		if(number==19){
-    			cout<<"!->TCP \\ open!  "<<number<<"  chargen"<<endl;
-    		}
-    		if(number==20){
-    			cout<<"!->TCP \\ open!  "<<number<<"  ftpS-data"<<endl;
-    		}
-    		if(number==21){
-    			cout<<"!->TCP \\ open!  "<<number<<"  ftp-control"<<endl;
-    		}
-    		if(number==22){
-    			cout<<"!->TCP \\ open!  "<<number<<"  ssh"<<endl;
-    		}
-    		if(number==23){
-    			cout<<"!->TCP \\ open!  "<<number<<"  telnet"<<endl;
-    		}
-    		if(number==25){
-    			cout<<"!->TCP \\ open!  "<<number<<"  smtp"<<endl;
-    		}
-    		if(number==37){
-    			cout<<"!->TCP \\ open!  "<<number<<"  time"<<endl;
-    		}
-    		if(number==39){
-    			cout<<"!->TCP \\ open!  "<<number<<"  rlp"<<endl;
-    		}
-    		if(number==42){
-    			cout<<"!->TCP \\ open!  "<<number<<"  nameserver"<<endl;
-    		}
-    		if(number==43){
-    			cout<<"!->TCP \\ open!  "<<number<<"  nickname"<<endl;
-    		}
-    		if(number==49){
-    			cout<<"!->TCP \\ open!  "<<number<<"  tacacs"<<endl;
-    		}
-    		if(number==50){
-    			cout<<"!->TCP \\ open!  "<<number<<"  re-mail-ck"<<endl;
-    		}
-    		if(number==53){
-    			cout<<"!->TCP \\ open!  "<<number<<"  domain"<<endl;
-    		}
-    		if(number==63){
-    			cout<<"!->TCP \\ open!  "<<number<<"  whois++"<<endl;
-    		}
-    		if(number==66){
-    			cout<<"!->TCP \\ open!  "<<number<<"  Oracle SQLNet"<<endl;
-    		}
-    		if(number==70){
-    			cout<<"!->TCP \\ open!  "<<number<<"  gopher"<<endl;
-    		}
-    		if(number==79){
-    			cout<<"!->TCP \\ open!  "<<number<<"  finjer"<<endl;
-    		}
-    		if(number==80){
-    			cout<<"!->TCP \\ open!  "<<number<<"  http"<<endl;
-    		}
-    		if(number==88){
-    			cout<<"!->TCP \\ open!  "<<number<<"  kerberos"<<endl;
-    		}
-    		if(number==95){
-    			cout<<"!->TCP \\ open!  "<<number<<"  supdup"<<endl;
-    		}
-    		if(number==101){
-    			cout<<"!->TCP \\ open!  "<<number<<"  hostname"<<endl;
-    		}
-    		if(number==107){
-    			cout<<"!->TCP \\ open!  "<<number<<"  rtelnet"<<endl;
-    		}
-    		if(number==109){
-    			cout<<"!->TCP \\ open!  "<<number<<"  pop2"<<endl;
-    		}
-    		if(number==110){
-    			cout<<"!->TCP \\ open!  "<<number<<"  pop3"<<endl;
-    		}
-    		if(number==111){
-    			cout<<"!->TCP \\ open!  "<<number<<"  sunrpc"<<endl;
-    		}
-    		if(number==113){
-    			cout<<"!->TCP \\ open!  "<<number<<"  auth"<<endl;
-    		}
-    		if(number==115){
-    			cout<<"!->TCP \\ open!  "<<number<<"  sftp"<<endl;
-    		}
-    		if(number==117){
-    			cout<<"!->TCP \\ open!  "<<number<<"  uupc-path"<<endl;
-    		}
-    		if(number==119){
-    			cout<<"!->TCP \\ open!  "<<number<<"  nntp"<<endl;
-    		}
-    		if(number==135){
-    			cout<<"!->TCP \\ open!  "<<number<<"  epmap"<<endl;
-    		}
-    		if(number==139){
-    			cout<<"!->TCP \\ open!  "<<number<<"  netbios-ns"<<endl;
-    		}
-    		if(number==143){
-    			cout<<"!->TCP \\ open!  "<<number<<"  imap"<<endl;
-    		}
-    		if(number==174){
-    			cout<<"!->TCP \\ open!  "<<number<<"  mailq"<<endl;
-    		}
-    		if(number==177){
-    			cout<<"!->TCP \\ open!  "<<number<<"  xdmcp"<<endl;
-    		}
-    		if(number==178){
-    			cout<<"!->TCP \\ open!  "<<number<<"  nextstep"<<endl;
-    		}
-    		if(number==179){
-    			cout<<"!->TCP \\ open!  "<<number<<"  bgp"<<endl;
-    		}
-    		if(number==194){
-    			cout<<"!->TCP \\ open!  "<<number<<"  irc"<<endl;
-    		}
-    		if(number==199){
-    			cout<<"!->TCP \\ open!  "<<number<<"  smux"<<endl;
-    		}
-    		if(number==201){
-    			cout<<"!->TCP \\ open!  "<<number<<"  at-rtmp"<<endl;
-    		}
-    		if(number==202){
-    			cout<<"!->TCP \\ open!  "<<number<<"  at-nbp"<<endl;
-    		}
-    		if(number==204){
-    			cout<<"!->TCP \\ open!  "<<number<<"  at-echo"<<endl;
-    		}
-    		if(number==206){
-    			cout<<"!->TCP \\ open!  "<<number<<"  at-zis"<<endl;
-    		}
-    		if(number==209){
-    			cout<<"!->TCP \\ open!  "<<number<<"  qmtp"<<endl;
-    		}
-    		if(number==210){
-    			cout<<"!->TCP \\ open!  "<<number<<"  z39.50"<<endl;
-    		}
-    		if(number==213){
-    			cout<<"!->TCP \\ open!  "<<number<<"  ipx"<<endl;
-    		}
-    		if(number==220){
-    			cout<<"!->TCP \\ open!  "<<number<<"  imap3"<<endl;
-    		}
-    		if(number==245){
-    			cout<<"!->TCP \\ open!  "<<number<<"  link"<<endl;
-    		}
-    		if(number==347){
-    			cout<<"!->TCP \\ open!  "<<number<<"  fatserv"<<endl;
-    		}
-    		if(number==363){
-    			cout<<"!->TCP \\ open!  "<<number<<"  rsvp_tunnel"<<endl;
-    		}
-    		if(number==369){
-    			cout<<"!->TCP \\ open!  "<<number<<"  rpc2portmap"<<endl;
-    		}
-    		if(number==370){
-    			cout<<"!->TCP \\ open!  "<<number<<"  codaauth2"<<endl;
-    		}
-    		if(number==372){
-    			cout<<"!->TCP \\ open!  "<<number<<"  ulistproc"<<endl;
-    		}
-    		if(number==389){
-    			cout<<"!->TCP \\ open!  "<<number<<"  Idap"<<endl;
-    		}
-    		if(number==427){
-    			cout<<"!->TCP \\ open!  "<<number<<"  svrloc"<<endl;
-    		}
-    		if(number==434){
-    			cout<<"!->TCP \\ open!  "<<number<<"  mobileip-agent"<<endl;    			
-    		}
-    		if(number==435){
-    			cout<<"!->TCP \\ open!  "<<number<<"  tcpmux"<<endl;	
-    		}
-    		if(number==443){
-    			cout<<"!->TCP \\ open!  "<<number<<"  https"<<endl;
-    		}
-    		if(number==444){
-    		    cout<<"!->TCP \\ open!  "<<number<<"  snpp"<<endl;	
-    		}
-    		if(number==445){
-    			cout<<"!->TCP \\ open!  "<<number<<"  microsoft-ds"<<endl;
-    		}
-    		if(number==465){
-    			cout<<"!->TCP \\ open!  "<<number<<"  smtps"<<endl;
-    		}
-    		if(number==512){
-    			cout<<"!->TCP \\ open!  "<<number<<"  exec"<<endl;
-    		}
-    		if(number==513){
-    			cout<<"!->TCP \\ open!  "<<number<<"  rlogin"<<endl;
-    		}
-    		if(number==514){
-    			cout<<"!->TCP \\ open!  "<<number<<"  syslog"<<endl;
-    		}
-    		if(number==515){
-    			cout<<"!->TCP \\ open!  "<<number<<"  WindowsPrinter"<<endl;
-    		}
-    		if(number==587){
-    			cout<<"!->TCP \\ open!  "<<number<<"  smtp"<<endl;
-    		}
-    		if(number==591){
-    			cout<<"!->TCP \\ open!  "<<number<<"  fileMaker"<<endl;
-    		}
-    		if(number==631){
-    			cout<<"!->TCP \\ open!  "<<number<<"  cups"<<endl;
-    		}
-    		if(number==666){
-    			cout<<"!->TCP \\ open!  "<<number<<"  Doom"<<endl;
-    		}
-    		if(number==690){
-    			cout<<"!->TCP \\ open!  "<<number<<"  vatp"<<endl;
-    		}
-    		if(number==993){
-    			cout<<"!->TCP \\ open!  "<<number<<"  imap4SSL"<<endl;
-    		}
-    		if(number==995){
-    			cout<<"!->TCP \\ open!  "<<number<<"  pop3SSL"<<endl;
-    		}
-    		if(number>996){
-    			cout<<"!->TCP \\ open!  "<<number<<"  know"<<endl;
-    		}
+    			cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  tcpmux"<<endl;
+    		}
+			if(number==5){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  rje"<<endl;
+			}
+			if(number==7){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  echo"<<endl;
+			}
+			if(number==9){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  discard"<<endl;
+			}
+			if(number==11){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  systat"<<endl;
+			}
+			if(number==13){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  daytime"<<endl;
+			}
+			if(number==17){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  qotd"<<endl;
+			}
+			if(number==18){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  msp"<<endl;
+			}
+			if(number==19){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  chargen"<<endl;
+			}
+			if(number==20){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  ftpS-data"<<endl;
+			}
+			if(number==21){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  ftp-control"<<endl;
+			}
+			if(number==22){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  ssh"<<endl;
+			}
+			if(number==23){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  telnet"<<endl;
+			}
+			if(number==25){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  smtp"<<endl;
+			}
+			if(number==37){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  time"<<endl;
+			}
+			if(number==39){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  rlp"<<endl;
+			}
+			if(number==42){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  nameserver"<<endl;
+			}
+			if(number==43){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  nickname"<<endl;
+			}
+			if(number==49){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  tacacs"<<endl;
+			}
+			if(number==50){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  re-mail-ck"<<endl;
+			}
+			if(number==53){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  domain"<<endl;
+			}
+			if(number==63){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  whois++"<<endl;
+			}
+			if(number==66){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  Oracle SQLNet"<<endl;
+			}
+			if(number==70){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  gopher"<<endl;
+			}
+			if(number==79){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  finjer"<<endl;
+			}
+			if(number==80){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  http"<<endl;
+			}
+			if(number==88){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  kerberos"<<endl;
+			}
+			if(number==95){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  supdup"<<endl;
+			}
+			if(number==101){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  hostname"<<endl;
+			}
+			if(number==107){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  rtelnet"<<endl;
+			}
+			if(number==109){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  pop2"<<endl;
+			}
+			if(number==110){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  pop3"<<endl;
+			}
+			if(number==111){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  sunrpc"<<endl;
+			}
+			if(number==113){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  auth"<<endl;
+			}
+			if(number==115){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  sftp"<<endl;
+			}
+			if(number==117){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  uupc-path"<<endl;
+			}
+			if(number==119){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  nntp"<<endl;
+			}
+			if(number==135){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  epmap"<<endl;
+			}
+			if(number==139){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  netbios-ns"<<endl;
+			}
+			if(number==143){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  imap"<<endl;
+			}
+			if(number==174){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  mailq"<<endl;
+			}
+			if(number==177){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  xdmcp"<<endl;
+			}
+			if(number==178){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  nextstep"<<endl;
+			}
+			if(number==179){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  bgp"<<endl;
+			}
+			if(number==194){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  irc"<<endl;
+			}
+			if(number==199){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  smux"<<endl;
+			}
+			if(number==201){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  at-rtmp"<<endl;
+			}
+			if(number==202){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  at-nbp"<<endl;
+			}
+			if(number==204){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  at-echo"<<endl;
+			}
+			if(number==206){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  at-zis"<<endl;
+			}
+			if(number==209){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  qmtp"<<endl;
+			}
+			if(number==210){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  z39.50"<<endl;
+			}
+			if(number==213){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  ipx"<<endl;
+			}
+			if(number==220){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  imap3"<<endl;
+			}
+			if(number==245){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  link"<<endl;
+			}
+			if(number==347){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  fatserv"<<endl;
+			}
+			if(number==363){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  rsvp_tunnel"<<endl;
+			}
+			if(number==369){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  rpc2portmap"<<endl;
+			}
+			if(number==370){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  codaauth2"<<endl;
+			}
+			if(number==372){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  ulistproc"<<endl;
+			}
+			if(number==389){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  Idap"<<endl;
+			}
+			if(number==427){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  svrloc"<<endl;
+			}
+			if(number==434){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  mobileip-agent"<<endl;
+			}
+			if(number==435){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  tcpmux"<<endl;
+			}
+			if(number==443){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  https"<<endl;
+			}
+			if(number==444){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  snpp"<<endl;
+			}
+			if(number==445){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  microsoft-ds"<<endl;
+			}
+			if(number==465){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  smtps"<<endl;
+			}
+			if(number==512){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  exec"<<endl;
+			}
+			if(number==513){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  rlogin"<<endl;
+			}
+			if(number==514){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  syslog"<<endl;
+			}
+			if(number==515){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  WindowsPrinter"<<endl;
+			}
+			if(number==587){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  smtp"<<endl;
+			}
+			if(number==591){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  fileMaker"<<endl;
+			}
+			if(number==631){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  cups"<<endl;
+			}
+			if(number==666){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  Doom"<<endl;
+			}
+			if(number==690){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  vatp"<<endl;
+			}
+			if(number==993){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  imap4SSL"<<endl;
+			}
+			if(number==995){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  pop3SSL"<<endl;
+			}
+			if(number>996){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  know"<<endl;
+			}
+
     		close(sock);
     		return 0;
     		
@@ -453,245 +454,245 @@ class Enchufe{
     			return 1;
     		}
     		if(number==1){
-    			cout<<"!->TCP \\ open!  "<<number<<"  tcpmux"<<endl;
-    		}
-    		if(number==5){
-    			cout<<"!->TCP \\ open!  "<<number<<"  rje"<<endl;
-    		}
-    		if(number==7){
-    			cout<<"!->TCP \\ open!  "<<number<<"  echo"<<endl;
-    		}
-    		if(number==9){
-    			cout<<"!->TCP \\ open!  "<<number<<"  discard"<<endl;
-    		}
-    		if(number==11){
-    			cout<<"!->TCP \\ open!  "<<number<<"  systat"<<endl;
-    		}
-    		if(number==13){
-    			cout<<"!->TCP \\ open!  "<<number<<"  daytime"<<endl;
-    		}
-    		if(number==17){
-    			cout<<"!->TCP \\ open!  "<<number<<"  qotd"<<endl;
-    		}
-    		if(number==18){
-    			cout<<"!->TCP \\ open!  "<<number<<"  msp"<<endl;
-    		}
-    		if(number==19){
-    			cout<<"!->TCP \\ open!  "<<number<<"  chargen"<<endl;
-    		}
-    		if(number==20){
-    			cout<<"!->TCP \\ open!  "<<number<<"  ftpS-data"<<endl;
-    		}
-    		if(number==21){
-    			cout<<"!->TCP \\ open!  "<<number<<"  ftp-control"<<endl;
-    		}
-    		if(number==22){
-    			cout<<"!->TCP \\ open!  "<<number<<"  ssh"<<endl;
-    		}
-    		if(number==23){
-    			cout<<"!->TCP \\ open!  "<<number<<"  telnet"<<endl;
-    		}
-    		if(number==25){
-    			cout<<"!->TCP \\ open!  "<<number<<"  smtp"<<endl;
-    		}
-    		if(number==37){
-    			cout<<"!->TCP \\ open!  "<<number<<"  time"<<endl;
-    		}
-    		if(number==39){
-    			cout<<"!->TCP \\ open!  "<<number<<"  rlp"<<endl;
-    		}
-    		if(number==42){
-    			cout<<"!->TCP \\ open!  "<<number<<"  nameserver"<<endl;
-    		}
-    		if(number==43){
-    			cout<<"!->TCP \\ open!  "<<number<<"  nickname"<<endl;
-    		}
-    		if(number==49){
-    			cout<<"!->TCP \\ open!  "<<number<<"  tacacs"<<endl;
-    		}
-    		if(number==50){
-    			cout<<"!->TCP \\ open!  "<<number<<"  re-mail-ck"<<endl;
-    		}
-    		if(number==53){
-    			cout<<"!->TCP \\ open!  "<<number<<"  domain"<<endl;
-    		}
-    		if(number==63){
-    			cout<<"!->TCP \\ open!  "<<number<<"  whois++"<<endl;
-    		}
-    		if(number==66){
-    			cout<<"!->TCP \\ open!  "<<number<<"  Oracle SQLNet"<<endl;
-    		}
-    		if(number==70){
-    			cout<<"!->TCP \\ open!  "<<number<<"  gopher"<<endl;
-    		}
-    		if(number==79){
-    			cout<<"!->TCP \\ open!  "<<number<<"  finjer"<<endl;
-    		}
-    		if(number==80){
-    			cout<<"!->TCP \\ open!  "<<number<<"  http"<<endl;
-    		}
-    		if(number==88){
-    			cout<<"!->TCP \\ open!  "<<number<<"  kerberos"<<endl;
-    		}
-    		if(number==95){
-    			cout<<"!->TCP \\ open!  "<<number<<"  supdup"<<endl;
-    		}
-    		if(number==101){
-    			cout<<"!->TCP \\ open!  "<<number<<"  hostname"<<endl;
-    		}
-    		if(number==107){
-    			cout<<"!->TCP \\ open!  "<<number<<"  rtelnet"<<endl;
-    		}
-    		if(number==109){
-    			cout<<"!->TCP \\ open!  "<<number<<"  pop2"<<endl;
-    		}
-    		if(number==110){
-    			cout<<"!->TCP \\ open!  "<<number<<"  pop3"<<endl;
-    		}
-    		if(number==111){
-    			cout<<"!->TCP \\ open!  "<<number<<"  sunrpc"<<endl;
-    		}
-    		if(number==113){
-    			cout<<"!->TCP \\ open!  "<<number<<"  auth"<<endl;
-    		}
-    		if(number==115){
-    			cout<<"!->TCP \\ open!  "<<number<<"  sftp"<<endl;
-    		}
-    		if(number==117){
-    			cout<<"!->TCP \\ open!  "<<number<<"  uupc-path"<<endl;
-    		}
-    		if(number==119){
-    			cout<<"!->TCP \\ open!  "<<number<<"  nntp"<<endl;
-    		}
-    		if(number==135){
-    			cout<<"!->TCP \\ open!  "<<number<<"  epmap"<<endl;
-    		}
-    		if(number==139){
-    			cout<<"!->TCP \\ open!  "<<number<<"  netbios-ns"<<endl;
-    		}
-    		if(number==143){
-    			cout<<"!->TCP \\ open!  "<<number<<"  imap"<<endl;
-    		}
-    		if(number==174){
-    			cout<<"!->TCP \\ open!  "<<number<<"  mailq"<<endl;
-    		}
-    		if(number==177){
-    			cout<<"!->TCP \\ open!  "<<number<<"  xdmcp"<<endl;
-    		}
-    		if(number==178){
-    			cout<<"!->TCP \\ open!  "<<number<<"  nextstep"<<endl;
-    		}
-    		if(number==179){
-    			cout<<"!->TCP \\ open!  "<<number<<"  bgp"<<endl;
-    		}
-    		if(number==194){
-    			cout<<"!->TCP \\ open!  "<<number<<"  irc"<<endl;
-    		}
-    		if(number==199){
-    			cout<<"!->TCP \\ open!  "<<number<<"  smux"<<endl;
-    		}
-    		if(number==201){
-    			cout<<"!->TCP \\ open!  "<<number<<"  at-rtmp"<<endl;
-    		}
-    		if(number==202){
-    			cout<<"!->TCP \\ open!  "<<number<<"  at-nbp"<<endl;
-    		}
-    		if(number==204){
-    			cout<<"!->TCP \\ open!  "<<number<<"  at-echo"<<endl;
-    		}
-    		if(number==206){
-    			cout<<"!->TCP \\ open!  "<<number<<"  at-zis"<<endl;
-    		}
-    		if(number==209){
-    			cout<<"!->TCP \\ open!  "<<number<<"  qmtp"<<endl;
-    		}
-    		if(number==210){
-    			cout<<"!->TCP \\ open!  "<<number<<"  z39.50"<<endl;
-    		}
-    		if(number==213){
-    			cout<<"!->TCP \\ open!  "<<number<<"  ipx"<<endl;
-    		}
-    		if(number==220){
-    			cout<<"!->TCP \\ open!  "<<number<<"  imap3"<<endl;
-    		}
-    		if(number==245){
-    			cout<<"!->TCP \\ open!  "<<number<<"  link"<<endl;
-    		}
-    		if(number==347){
-    			cout<<"!->TCP \\ open!  "<<number<<"  fatserv"<<endl;
-    		}
-    		if(number==363){
-    			cout<<"!->TCP \\ open!  "<<number<<"  rsvp_tunnel"<<endl;
-    		}
-    		if(number==369){
-    			cout<<"!->TCP \\ open!  "<<number<<"  rpc2portmap"<<endl;
-    		}
-    		if(number==370){
-    			cout<<"!->TCP \\ open!  "<<number<<"  codaauth2"<<endl;
-    		}
-    		if(number==372){
-    			cout<<"!->TCP \\ open!  "<<number<<"  ulistproc"<<endl;
-    		}
-    		if(number==389){
-    			cout<<"!->TCP \\ open!  "<<number<<"  Idap"<<endl;
-    		}
-    		if(number==427){
-    			cout<<"!->TCP \\ open!  "<<number<<"  svrloc"<<endl;
-    		}
-    		if(number==434){
-    			cout<<"!->TCP \\ open!  "<<number<<"  mobileip-agent"<<endl;    			
-    		}
-    		if(number==435){
-    			cout<<"!->TCP \\ open!  "<<number<<"  tcpmux"<<endl;	
-    		}
-    		if(number==443){
-    			cout<<"!->TCP \\ open!  "<<number<<"  https"<<endl;
-    		}
-    		if(number==444){
-    		    cout<<"!->TCP \\ open!  "<<number<<"  snpp"<<endl;	
-    		}
-    		if(number==445){
-    			cout<<"!->TCP \\ open!  "<<number<<"  microsoft-ds"<<endl;
-    		}
-    		if(number==465){
-    			cout<<"!->TCP \\ open!  "<<number<<"  smtps"<<endl;
-    		}
-    		if(number==512){
-    			cout<<"!->TCP \\ open!  "<<number<<"  exec"<<endl;
-    		}
-    		if(number==513){
-    			cout<<"!->TCP \\ open!  "<<number<<"  rlogin"<<endl;
-    		}
-    		if(number==514){
-    			cout<<"!->TCP \\ open!  "<<number<<"  syslog"<<endl;
-    		}
-    		if(number==515){
-    			cout<<"!->TCP \\ open!  "<<number<<"  WindowsPrinter"<<endl;
-    		}
-    		if(number==587){
-    			cout<<"!->TCP \\ open!  "<<number<<"  smtp"<<endl;
-    		}
-    		if(number==591){
-    			cout<<"!->TCP \\ open!  "<<number<<"  fileMaker"<<endl;
-    		}
-    		if(number==631){
-    			cout<<"!->TCP \\ open!  "<<number<<"  cups"<<endl;
-    		}
-    		if(number==666){
-    			cout<<"!->TCP \\ open!  "<<number<<"  Doom"<<endl;
-    		}
-    		if(number==690){
-    			cout<<"!->TCP \\ open!  "<<number<<"  vatp"<<endl;
-    		}
-    		if(number==993){
-    			cout<<"!->TCP \\ open!  "<<number<<"  imap4SSL"<<endl;
-    		}
-    		if(number==995){
-    			cout<<"!->TCP \\ open!  "<<number<<"  pop3SSL"<<endl;
-    		}
-    		if(number>996){
-    			cout<<"!->TCP \\ open!  "<<number<<"  know"<<endl;
-    		}
+    			cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  tcpmux"<<endl;
+    		}
+			if(number==5){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  rje"<<endl;
+			}
+			if(number==7){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  echo"<<endl;
+			}
+			if(number==9){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  discard"<<endl;
+			}
+			if(number==11){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  systat"<<endl;
+			}
+			if(number==13){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  daytime"<<endl;
+			}
+			if(number==17){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  qotd"<<endl;
+			}
+			if(number==18){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  msp"<<endl;
+			}
+			if(number==19){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  chargen"<<endl;
+			}
+			if(number==20){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  ftpS-data"<<endl;
+			}
+			if(number==21){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  ftp-control"<<endl;
+			}
+			if(number==22){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  ssh"<<endl;
+			}
+			if(number==23){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  telnet"<<endl;
+			}
+			if(number==25){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  smtp"<<endl;
+			}
+			if(number==37){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  time"<<endl;
+			}
+			if(number==39){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  rlp"<<endl;
+			}
+			if(number==42){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  nameserver"<<endl;
+			}
+			if(number==43){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  nickname"<<endl;
+			}
+			if(number==49){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  tacacs"<<endl;
+			}
+			if(number==50){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  re-mail-ck"<<endl;
+			}
+			if(number==53){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  domain"<<endl;
+			}
+			if(number==63){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  whois++"<<endl;
+			}
+			if(number==66){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  Oracle SQLNet"<<endl;
+			}
+			if(number==70){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  gopher"<<endl;
+			}
+			if(number==79){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  finjer"<<endl;
+			}
+			if(number==80){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  http"<<endl;
+			}
+			if(number==88){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  kerberos"<<endl;
+			}
+			if(number==95){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  supdup"<<endl;
+			}
+			if(number==101){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  hostname"<<endl;
+			}
+			if(number==107){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  rtelnet"<<endl;
+			}
+			if(number==109){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  pop2"<<endl;
+			}
+			if(number==110){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  pop3"<<endl;
+			}
+			if(number==111){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  sunrpc"<<endl;
+			}
+			if(number==113){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  auth"<<endl;
+			}
+			if(number==115){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  sftp"<<endl;
+			}
+			if(number==117){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  uupc-path"<<endl;
+			}
+			if(number==119){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  nntp"<<endl;
+			}
+			if(number==135){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  epmap"<<endl;
+			}
+			if(number==139){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  netbios-ns"<<endl;
+			}
+			if(number==143){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  imap"<<endl;
+			}
+			if(number==174){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  mailq"<<endl;
+			}
+			if(number==177){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  xdmcp"<<endl;
+			}
+			if(number==178){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  nextstep"<<endl;
+			}
+			if(number==179){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  bgp"<<endl;
+			}
+			if(number==194){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  irc"<<endl;
+			}
+			if(number==199){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  smux"<<endl;
+			}
+			if(number==201){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  at-rtmp"<<endl;
+			}
+			if(number==202){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  at-nbp"<<endl;
+			}
+			if(number==204){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  at-echo"<<endl;
+			}
+			if(number==206){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  at-zis"<<endl;
+			}
+			if(number==209){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  qmtp"<<endl;
+			}
+			if(number==210){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  z39.50"<<endl;
+			}
+			if(number==213){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  ipx"<<endl;
+			}
+			if(number==220){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  imap3"<<endl;
+			}
+			if(number==245){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  link"<<endl;
+			}
+			if(number==347){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  fatserv"<<endl;
+			}
+			if(number==363){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  rsvp_tunnel"<<endl;
+			}
+			if(number==369){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  rpc2portmap"<<endl;
+			}
+			if(number==370){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  codaauth2"<<endl;
+			}
+			if(number==372){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  ulistproc"<<endl;
+			}
+			if(number==389){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  Idap"<<endl;
+			}
+			if(number==427){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  svrloc"<<endl;
+			}
+			if(number==434){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  mobileip-agent"<<endl;
+			}
+			if(number==435){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  tcpmux"<<endl;
+			}
+			if(number==443){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  https"<<endl;
+			}
+			if(number==444){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  snpp"<<endl;
+			}
+			if(number==445){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  microsoft-ds"<<endl;
+			}
+			if(number==465){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  smtps"<<endl;
+			}
+			if(number==512){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  exec"<<endl;
+			}
+			if(number==513){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  rlogin"<<endl;
+			}
+			if(number==514){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  syslog"<<endl;
+			}
+			if(number==515){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  WindowsPrinter"<<endl;
+			}
+			if(number==587){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  smtp"<<endl;
+			}
+			if(number==591){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  fileMaker"<<endl;
+			}
+			if(number==631){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  cups"<<endl;
+			}
+			if(number==666){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  Doom"<<endl;
+			}
+			if(number==690){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  vatp"<<endl;
+			}
+			if(number==993){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  imap4SSL"<<endl;
+			}
+			if(number==995){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  pop3SSL"<<endl;
+			}
+			if(number>996){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  know"<<endl;
+			}
     		close(conector);
     		return 0;
     	}
@@ -709,488 +710,489 @@ class Enchufe{
     		int result = connect(enchufe, (sockaddr*)&serverDick, sizeof(serverDick));
     		if(result==-1){
 	    		if(number==1){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  tcpmux"<<endl;
-	    		}
-	    		if(number==5){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  rje"<<endl;
-	    		}
-	    		if(number==7){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  echo"<<endl;
-	    		}
-	    		if(number==9){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  discard"<<endl;
-	    		}
-	    		if(number==11){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  systat"<<endl;
-	    		}
-	    		if(number==13){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  daytime"<<endl;
-	    		}
-	    		if(number==17){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  qotd"<<endl;
-	    		}
-	    		if(number==18){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  msp"<<endl;
-	    		}
-	    		if(number==19){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  chargen"<<endl;
-	    		}
-	    		if(number==20){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  ftpS-data"<<endl;
-	    		}
-	    		if(number==21){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  ftp-control"<<endl;
-	    		}
-	    		if(number==22){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  ssh"<<endl;
-	    		}
-	    		if(number==23){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  telnet"<<endl;
-	    		}
-	    		if(number==25){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  smtp"<<endl;
-	    		}
-	    		if(number==37){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  time"<<endl;
-	    		}
-	    		if(number==39){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  rlp"<<endl;
-	    		}
-	    		if(number==42){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  nameserver"<<endl;
-	    		}
-	    		if(number==43){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  nickname"<<endl;
-	    		}
-	    		if(number==49){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  tacacs"<<endl;
-	    		}
-	    		if(number==50){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  re-mail-ck"<<endl;
-	    		}
-	    		if(number==53){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  domain"<<endl;
-	    		}
-	    		if(number==63){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  whois++"<<endl;
-	    		}
-	    		if(number==66){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  Oracle SQLNet"<<endl;
-	    		}
-	    		if(number==70){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  gopher"<<endl;
-	    		}
-	    		if(number==79){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  finjer"<<endl;
-	    		}
-	    		if(number==80){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  http"<<endl;
-	    		}
-	    		if(number==88){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  kerberos"<<endl;
-	    		}
-	    		if(number==95){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  supdup"<<endl;
-	    		}
-	    		if(number==101){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  hostname"<<endl;
-	    		}
-	    		if(number==107){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  rtelnet"<<endl;
-	    		}
-	    		if(number==109){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  pop2"<<endl;
-	    		}
-	    		if(number==110){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  pop3"<<endl;
-	    		}
-	    		if(number==111){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  sunrpc"<<endl;
-	    		}
-	    		if(number==113){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  auth"<<endl;
-	    		}
-	    		if(number==115){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  sftp"<<endl;
-	    		}
-	    		if(number==117){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  uupc-path"<<endl;
-	    		}
-	    		if(number==119){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  nntp"<<endl;
-	    		}
-	    		if(number==135){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  epmap"<<endl;
-	    		}
-	    		if(number==139){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  netbios-ns"<<endl;
-	    		}
-	    		if(number==143){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  imap"<<endl;
-	    		}
-	    		if(number==174){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  mailq"<<endl;
-	    		}
-	    		if(number==177){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  xdmcp"<<endl;
-	    		}
-	    		if(number==178){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  nextstep"<<endl;
-	    		}
-	    		if(number==179){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  bgp"<<endl;
-	    		}
-	    		if(number==194){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  irc"<<endl;
-	    		}
-	    		if(number==199){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  smux"<<endl;
-	    		}
-	    		if(number==201){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  at-rtmp"<<endl;
-	    		}
-	    		if(number==202){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  at-nbp"<<endl;
-	    		}
-	    		if(number==204){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  at-echo"<<endl;
-	    		}
-	    		if(number==206){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  at-zis"<<endl;
-	    		}
-	    		if(number==209){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  qmtp"<<endl;
-	    		}
-	    		if(number==210){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  z39.50"<<endl;
-	    		}
-	    		if(number==213){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  ipx"<<endl;
-	    		}
-	    		if(number==220){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  imap3"<<endl;
-	    		}
-	    		if(number==245){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  link"<<endl;
-	    		}
-	    		if(number==347){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  fatserv"<<endl;
-	    		}
-	    		if(number==363){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  rsvp_tunnel"<<endl;
-	    		}
-	    		if(number==369){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  rpc2portmap"<<endl;
-	    		}
-	    		if(number==370){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  codaauth2"<<endl;
-	    		}
-	    		if(number==372){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  ulistproc"<<endl;
-	    		}
-	    		if(number==389){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  Idap"<<endl;
-	    		}
-	    		if(number==427){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  svrloc"<<endl;
-	    		}
-	    		if(number==434){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  mobileip-agent"<<endl;    			
-	    		}
-	    		if(number==435){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  tcpmux"<<endl;	
-	    		}
-	    		if(number==443){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  https"<<endl;
-	    		}
-	    		if(number==444){
-	    		    cout<<"!->TCP \\ close!  "<<number<<"  snpp"<<endl;	
-	    		}
-	    		if(number==445){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  microsoft-ds"<<endl;
-	    		}
-	    		if(number==465){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  smtps"<<endl;
-	    		}
-	    		if(number==512){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  exec"<<endl;
-	    		}
-	    		if(number==513){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  rlogin"<<endl;
-	    		}
-	    		if(number==514){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  syslog"<<endl;
-	    		}
-	    		if(number==515){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  WindowsPrinter"<<endl;
-	    		}
-	    		if(number==587){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  smtp"<<endl;
-	    		}
-	    		if(number==591){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  fileMaker"<<endl;
-	    		}
-	    		if(number==631){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  cups"<<endl;
-	    		}
-	    		if(number==666){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  Doom"<<endl;
-	    		}
-	    		if(number==690){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  vatp"<<endl;
-	    		}
-	    		if(number==993){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  imap4SSL"<<endl;
-	    		}
-	    		if(number==995){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  pop3SSL"<<endl;
-	    		}
-	    		if(number>996){
-	    			cout<<"!->TCP \\ close!  "<<number<<"  know"<<endl;
-	    		}
+	    			cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  tcpmux"<<endl;
+	    		}
+				if(number==5){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  rje"<<endl;
+				}
+				if(number==7){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  echo"<<endl;
+				}
+				if(number==9){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  discard"<<endl;
+				}
+				if(number==11){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  systat"<<endl;
+				}
+				if(number==13){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  daytime"<<endl;
+				}
+				if(number==17){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  qotd"<<endl;
+				}
+				if(number==18){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  msp"<<endl;
+				}
+				if(number==19){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  chargen"<<endl;
+				}
+				if(number==20){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  ftpS-data"<<endl;
+				}
+				if(number==21){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  ftp-control"<<endl;
+				}
+				if(number==22){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  ssh"<<endl;
+				}
+				if(number==23){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  telnet"<<endl;
+				}
+				if(number==25){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  smtp"<<endl;
+				}
+				if(number==37){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  time"<<endl;
+				}
+				if(number==39){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  rlp"<<endl;
+				}
+				if(number==42){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  nameserver"<<endl;
+				}
+				if(number==43){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  nickname"<<endl;
+				}
+				if(number==49){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  tacacs"<<endl;
+				}
+				if(number==50){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  re-mail-ck"<<endl;
+				}
+				if(number==53){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  domain"<<endl;
+				}
+				if(number==63){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  whois++"<<endl;
+				}
+				if(number==66){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  Oracle SQLNet"<<endl;
+				}
+				if(number==70){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  gopher"<<endl;
+				}
+				if(number==79){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  finjer"<<endl;
+				}
+				if(number==80){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  http"<<endl;
+				}
+				if(number==88){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  kerberos"<<endl;
+				}
+				if(number==95){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  supdup"<<endl;
+				}
+				if(number==101){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  hostname"<<endl;
+				}
+				if(number==107){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  rtelnet"<<endl;
+				}
+				if(number==109){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  pop2"<<endl;
+				}
+				if(number==110){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  pop3"<<endl;
+				}
+				if(number==111){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  sunrpc"<<endl;
+				}
+				if(number==113){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  auth"<<endl;
+				}
+				if(number==115){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  sftp"<<endl;
+				}
+				if(number==117){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  uupc-path"<<endl;
+				}
+				if(number==119){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  nntp"<<endl;
+				}
+				if(number==135){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  epmap"<<endl;
+				}
+				if(number==139){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  netbios-ns"<<endl;
+				}
+				if(number==143){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  imap"<<endl;
+				}
+				if(number==174){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  mailq"<<endl;
+				}
+				if(number==177){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  xdmcp"<<endl;
+				}
+				if(number==178){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  nextstep"<<endl;
+				}
+				if(number==179){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  bgp"<<endl;
+				}
+				if(number==194){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  irc"<<endl;
+				}
+				if(number==199){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  smux"<<endl;
+				}
+				if(number==201){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  at-rtmp"<<endl;
+				}
+				if(number==202){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  at-nbp"<<endl;
+				}
+				if(number==204){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  at-echo"<<endl;
+				}
+				if(number==206){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  at-zis"<<endl;
+				}
+				if(number==209){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  qmtp"<<endl;
+				}
+				if(number==210){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  z39.50"<<endl;
+				}
+				if(number==213){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  ipx"<<endl;
+				}
+				if(number==220){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  imap3"<<endl;
+				}
+				if(number==245){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  link"<<endl;
+				}
+				if(number==347){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  fatserv"<<endl;
+				}
+				if(number==363){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  rsvp_tunnel"<<endl;
+				}
+				if(number==369){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  rpc2portmap"<<endl;
+				}
+				if(number==370){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  codaauth2"<<endl;
+				}
+				if(number==372){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  ulistproc"<<endl;
+				}
+				if(number==389){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  Idap"<<endl;
+				}
+				if(number==427){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  svrloc"<<endl;
+				}
+				if(number==434){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  mobileip-agent"<<endl;
+				}
+				if(number==435){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  tcpmux"<<endl;
+				}
+				if(number==443){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  https"<<endl;
+				}
+				if(number==444){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  snpp"<<endl;
+				}
+				if(number==445){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  microsoft-ds"<<endl;
+				}
+				if(number==465){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  smtps"<<endl;
+				}
+				if(number==512){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  exec"<<endl;
+				}
+				if(number==513){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  rlogin"<<endl;
+				}
+				if(number==514){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  syslog"<<endl;
+				}
+				if(number==515){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  WindowsPrinter"<<endl;
+				}
+				if(number==587){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  smtp"<<endl;
+				}
+				if(number==591){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  fileMaker"<<endl;
+				}
+				if(number==631){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  cups"<<endl;
+				}
+				if(number==666){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  Doom"<<endl;
+				}
+				if(number==690){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  vatp"<<endl;
+				}
+				if(number==993){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  imap4SSL"<<endl;
+				}
+				if(number==995){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  pop3SSL"<<endl;
+				}
+				if(number>996){
+				    cout<<RED<<"!->TCP "<<YELLOW<<"\\ close! \\ "<<RED<<number<<GREEN<<"  know"<<endl;
+				}
+
     			close(enchufe);
     			return 1;
     		}
     		if(number==1){
-    			cout<<"!->TCP \\ open!  "<<number<<"  tcpmux"<<endl;
-    		}
-    		if(number==5){
-    			cout<<"!->TCP \\ open!  "<<number<<"  rje"<<endl;
-    		}
-    		if(number==7){
-    			cout<<"!->TCP \\ open!  "<<number<<"  echo"<<endl;
-    		}
-    		if(number==9){
-    			cout<<"!->TCP \\ open!  "<<number<<"  discard"<<endl;
-    		}
-    		if(number==11){
-    			cout<<"!->TCP \\ open!  "<<number<<"  systat"<<endl;
-    		}
-    		if(number==13){
-    			cout<<"!->TCP \\ open!  "<<number<<"  daytime"<<endl;
-    		}
-    		if(number==17){
-    			cout<<"!->TCP \\ open!  "<<number<<"  qotd"<<endl;
-    		}
-    		if(number==18){
-    			cout<<"!->TCP \\ open!  "<<number<<"  msp"<<endl;
-    		}
-    		if(number==19){
-    			cout<<"!->TCP \\ open!  "<<number<<"  chargen"<<endl;
-    		}
-    		if(number==20){
-    			cout<<"!->TCP \\ open!  "<<number<<"  ftpS-data"<<endl;
-    		}
-    		if(number==21){
-    			cout<<"!->TCP \\ open!  "<<number<<"  ftp-control"<<endl;
-    		}
-    		if(number==22){
-    			cout<<"!->TCP \\ open!  "<<number<<"  ssh"<<endl;
-    		}
-    		if(number==23){
-    			cout<<"!->TCP \\ open!  "<<number<<"  telnet"<<endl;
-    		}
-    		if(number==25){
-    			cout<<"!->TCP \\ open!  "<<number<<"  smtp"<<endl;
-    		}
-    		if(number==37){
-    			cout<<"!->TCP \\ open!  "<<number<<"  time"<<endl;
-    		}
-    		if(number==39){
-    			cout<<"!->TCP \\ open!  "<<number<<"  rlp"<<endl;
-    		}
-    		if(number==42){
-    			cout<<"!->TCP \\ open!  "<<number<<"  nameserver"<<endl;
-    		}
-    		if(number==43){
-    			cout<<"!->TCP \\ open!  "<<number<<"  nickname"<<endl;
-    		}
-    		if(number==49){
-    			cout<<"!->TCP \\ open!  "<<number<<"  tacacs"<<endl;
-    		}
-    		if(number==50){
-    			cout<<"!->TCP \\ open!  "<<number<<"  re-mail-ck"<<endl;
-    		}
-    		if(number==53){
-    			cout<<"!->TCP \\ open!  "<<number<<"  domain"<<endl;
-    		}
-    		if(number==63){
-    			cout<<"!->TCP \\ open!  "<<number<<"  whois++"<<endl;
-    		}
-    		if(number==66){
-    			cout<<"!->TCP \\ open!  "<<number<<"  Oracle SQLNet"<<endl;
-    		}
-    		if(number==70){
-    			cout<<"!->TCP \\ open!  "<<number<<"  gopher"<<endl;
-    		}
-    		if(number==79){
-    			cout<<"!->TCP \\ open!  "<<number<<"  finjer"<<endl;
-    		}
-    		if(number==80){
-    			cout<<"!->TCP \\ open!  "<<number<<"  http"<<endl;
-    		}
-    		if(number==88){
-    			cout<<"!->TCP \\ open!  "<<number<<"  kerberos"<<endl;
-    		}
-    		if(number==95){
-    			cout<<"!->TCP \\ open!  "<<number<<"  supdup"<<endl;
-    		}
-    		if(number==101){
-    			cout<<"!->TCP \\ open!  "<<number<<"  hostname"<<endl;
-    		}
-    		if(number==107){
-    			cout<<"!->TCP \\ open!  "<<number<<"  rtelnet"<<endl;
-    		}
-    		if(number==109){
-    			cout<<"!->TCP \\ open!  "<<number<<"  pop2"<<endl;
-    		}
-    		if(number==110){
-    			cout<<"!->TCP \\ open!  "<<number<<"  pop3"<<endl;
-    		}
-    		if(number==111){
-    			cout<<"!->TCP \\ open!  "<<number<<"  sunrpc"<<endl;
-    		}
-    		if(number==113){
-    			cout<<"!->TCP \\ open!  "<<number<<"  auth"<<endl;
-    		}
-    		if(number==115){
-    			cout<<"!->TCP \\ open!  "<<number<<"  sftp"<<endl;
-    		}
-    		if(number==117){
-    			cout<<"!->TCP \\ open!  "<<number<<"  uupc-path"<<endl;
-    		}
-    		if(number==119){
-    			cout<<"!->TCP \\ open!  "<<number<<"  nntp"<<endl;
-    		}
-    		if(number==135){
-    			cout<<"!->TCP \\ open!  "<<number<<"  epmap"<<endl;
-    		}
-    		if(number==139){
-    			cout<<"!->TCP \\ open!  "<<number<<"  netbios-ns"<<endl;
-    		}
-    		if(number==143){
-    			cout<<"!->TCP \\ open!  "<<number<<"  imap"<<endl;
-    		}
-    		if(number==174){
-    			cout<<"!->TCP \\ open!  "<<number<<"  mailq"<<endl;
-    		}
-    		if(number==177){
-    			cout<<"!->TCP \\ open!  "<<number<<"  xdmcp"<<endl;
-    		}
-    		if(number==178){
-    			cout<<"!->TCP \\ open!  "<<number<<"  nextstep"<<endl;
-    		}
-    		if(number==179){
-    			cout<<"!->TCP \\ open!  "<<number<<"  bgp"<<endl;
-    		}
-    		if(number==194){
-    			cout<<"!->TCP \\ open!  "<<number<<"  irc"<<endl;
-    		}
-    		if(number==199){
-    			cout<<"!->TCP \\ open!  "<<number<<"  smux"<<endl;
-    		}
-    		if(number==201){
-    			cout<<"!->TCP \\ open!  "<<number<<"  at-rtmp"<<endl;
-    		}
-    		if(number==202){
-    			cout<<"!->TCP \\ open!  "<<number<<"  at-nbp"<<endl;
-    		}
-    		if(number==204){
-    			cout<<"!->TCP \\ open!  "<<number<<"  at-echo"<<endl;
-    		}
-    		if(number==206){
-    			cout<<"!->TCP \\ open!  "<<number<<"  at-zis"<<endl;
-    		}
-    		if(number==209){
-    			cout<<"!->TCP \\ open!  "<<number<<"  qmtp"<<endl;
-    		}
-    		if(number==210){
-    			cout<<"!->TCP \\ open!  "<<number<<"  z39.50"<<endl;
-    		}
-    		if(number==213){
-    			cout<<"!->TCP \\ open!  "<<number<<"  ipx"<<endl;
-    		}
-    		if(number==220){
-    			cout<<"!->TCP \\ open!  "<<number<<"  imap3"<<endl;
-    		}
-    		if(number==245){
-    			cout<<"!->TCP \\ open!  "<<number<<"  link"<<endl;
-    		}
-    		if(number==347){
-    			cout<<"!->TCP \\ open!  "<<number<<"  fatserv"<<endl;
-    		}
-    		if(number==363){
-    			cout<<"!->TCP \\ open!  "<<number<<"  rsvp_tunnel"<<endl;
-    		}
-    		if(number==369){
-    			cout<<"!->TCP \\ open!  "<<number<<"  rpc2portmap"<<endl;
-    		}
-    		if(number==370){
-    			cout<<"!->TCP \\ open!  "<<number<<"  codaauth2"<<endl;
-    		}
-    		if(number==372){
-    			cout<<"!->TCP \\ open!  "<<number<<"  ulistproc"<<endl;
-    		}
-    		if(number==389){
-    			cout<<"!->TCP \\ open!  "<<number<<"  Idap"<<endl;
-    		}
-    		if(number==427){
-    			cout<<"!->TCP \\ open!  "<<number<<"  svrloc"<<endl;
-    		}
-    		if(number==434){
-    			cout<<"!->TCP \\ open!  "<<number<<"  mobileip-agent"<<endl;    			
-    		}
-    		if(number==435){
-    			cout<<"!->TCP \\ open!  "<<number<<"  tcpmux"<<endl;	
-    		}
-    		if(number==443){
-    			cout<<"!->TCP \\ open!  "<<number<<"  https"<<endl;
-    		}
-    		if(number==444){
-    		    cout<<"!->TCP \\ open!  "<<number<<"  snpp"<<endl;	
-    		}
-    		if(number==445){
-    			cout<<"!->TCP \\ open!  "<<number<<"  microsoft-ds"<<endl;
-    		}
-    		if(number==465){
-    			cout<<"!->TCP \\ open!  "<<number<<"  smtps"<<endl;
-    		}
-    		if(number==512){
-    			cout<<"!->TCP \\ open!  "<<number<<"  exec"<<endl;
-    		}
-    		if(number==513){
-    			cout<<"!->TCP \\ open!  "<<number<<"  rlogin"<<endl;
-    		}
-    		if(number==514){
-    			cout<<"!->TCP \\ open!  "<<number<<"  syslog"<<endl;
-    		}
-    		if(number==515){
-    			cout<<"!->TCP \\ open!  "<<number<<"  WindowsPrinter"<<endl;
-    		}
-    		if(number==587){
-    			cout<<"!->TCP \\ open!  "<<number<<"  smtp"<<endl;
-    		}
-    		if(number==591){
-    			cout<<"!->TCP \\ open!  "<<number<<"  fileMaker"<<endl;
-    		}
-    		if(number==631){
-    			cout<<"!->TCP \\ open!  "<<number<<"  cups"<<endl;
-    		}
-    		if(number==666){
-    			cout<<"!->TCP \\ open!  "<<number<<"  Doom"<<endl;
-    		}
-    		if(number==690){
-    			cout<<"!->TCP \\ open!  "<<number<<"  vatp"<<endl;
-    		}
-    		if(number==993){
-    			cout<<"!->TCP \\ open!  "<<number<<"  imap4SSL"<<endl;
-    		}
-    		if(number==995){
-    			cout<<"!->TCP \\ open!  "<<number<<"  pop3SSL"<<endl;
-    		}
-    		if(number>995){
-    			cout<<"!->TCP \\ open!  "<<number<<"  know"<<endl;
-    		}
+    			cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  tcpmux"<<endl;
+    		}
+			if(number==5){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  rje"<<endl;
+			}
+			if(number==7){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  echo"<<endl;
+			}
+			if(number==9){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  discard"<<endl;
+			}
+			if(number==11){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  systat"<<endl;
+			}
+			if(number==13){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  daytime"<<endl;
+			}
+			if(number==17){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  qotd"<<endl;
+			}
+			if(number==18){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  msp"<<endl;
+			}
+			if(number==19){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  chargen"<<endl;
+			}
+			if(number==20){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  ftpS-data"<<endl;
+			}
+			if(number==21){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  ftp-control"<<endl;
+			}
+			if(number==22){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  ssh"<<endl;
+			}
+			if(number==23){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  telnet"<<endl;
+			}
+			if(number==25){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  smtp"<<endl;
+			}
+			if(number==37){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  time"<<endl;
+			}
+			if(number==39){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  rlp"<<endl;
+			}
+			if(number==42){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  nameserver"<<endl;
+			}
+			if(number==43){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  nickname"<<endl;
+			}
+			if(number==49){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  tacacs"<<endl;
+			}
+			if(number==50){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  re-mail-ck"<<endl;
+			}
+			if(number==53){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  domain"<<endl;
+			}
+			if(number==63){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  whois++"<<endl;
+			}
+			if(number==66){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  Oracle SQLNet"<<endl;
+			}
+			if(number==70){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  gopher"<<endl;
+			}
+			if(number==79){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  finjer"<<endl;
+			}
+			if(number==80){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  http"<<endl;
+			}
+			if(number==88){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  kerberos"<<endl;
+			}
+			if(number==95){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  supdup"<<endl;
+			}
+			if(number==101){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  hostname"<<endl;
+			}
+			if(number==107){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  rtelnet"<<endl;
+			}
+			if(number==109){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  pop2"<<endl;
+			}
+			if(number==110){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  pop3"<<endl;
+			}
+			if(number==111){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  sunrpc"<<endl;
+			}
+			if(number==113){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  auth"<<endl;
+			}
+			if(number==115){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  sftp"<<endl;
+			}
+			if(number==117){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  uupc-path"<<endl;
+			}
+			if(number==119){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  nntp"<<endl;
+			}
+			if(number==135){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  epmap"<<endl;
+			}
+			if(number==139){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  netbios-ns"<<endl;
+			}
+			if(number==143){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  imap"<<endl;
+			}
+			if(number==174){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  mailq"<<endl;
+			}
+			if(number==177){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  xdmcp"<<endl;
+			}
+			if(number==178){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  nextstep"<<endl;
+			}
+			if(number==179){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  bgp"<<endl;
+			}
+			if(number==194){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  irc"<<endl;
+			}
+			if(number==199){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  smux"<<endl;
+			}
+			if(number==201){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  at-rtmp"<<endl;
+			}
+			if(number==202){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  at-nbp"<<endl;
+			}
+			if(number==204){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  at-echo"<<endl;
+			}
+			if(number==206){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  at-zis"<<endl;
+			}
+			if(number==209){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  qmtp"<<endl;
+			}
+			if(number==210){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  z39.50"<<endl;
+			}
+			if(number==213){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  ipx"<<endl;
+			}
+			if(number==220){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  imap3"<<endl;
+			}
+			if(number==245){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  link"<<endl;
+			}
+			if(number==347){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  fatserv"<<endl;
+			}
+			if(number==363){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  rsvp_tunnel"<<endl;
+			}
+			if(number==369){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  rpc2portmap"<<endl;
+			}
+			if(number==370){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  codaauth2"<<endl;
+			}
+			if(number==372){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  ulistproc"<<endl;
+			}
+			if(number==389){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  Idap"<<endl;
+			}
+			if(number==427){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  svrloc"<<endl;
+			}
+			if(number==434){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  mobileip-agent"<<endl;
+			}
+			if(number==435){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  tcpmux"<<endl;
+			}
+			if(number==443){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  https"<<endl;
+			}
+			if(number==444){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  snpp"<<endl;
+			}
+			if(number==445){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  microsoft-ds"<<endl;
+			}
+			if(number==465){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  smtps"<<endl;
+			}
+			if(number==512){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  exec"<<endl;
+			}
+			if(number==513){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  rlogin"<<endl;
+			}
+			if(number==514){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  syslog"<<endl;
+			}
+			if(number==515){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  WindowsPrinter"<<endl;
+			}
+			if(number==587){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  smtp"<<endl;
+			}
+			if(number==591){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  fileMaker"<<endl;
+			}
+			if(number==631){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  cups"<<endl;
+			}
+			if(number==666){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  Doom"<<endl;
+			}
+			if(number==690){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  vatp"<<endl;
+			}
+			if(number==993){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  imap4SSL"<<endl;
+			}
+			if(number==995){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  pop3SSL"<<endl;
+			}
+			if(number>996){
+			    cout<<RED<<">> TCP "<<YELLOW<<"\\ open \\ "<<RED<<number<<GREEN<<"  know"<<endl;
+			}
     		close(enchufe);
     		return 0;
     		
@@ -1329,8 +1331,8 @@ int main(int argc, char *argv[]){
 					double simplescan = duration.count();
 					double factor = pow(10, 2);
 					double decimal = round(simplescan * factor) / factor;
-					cout<<"PortSeeker done: 10,000 ports scanned in "<<fixed<<setprecision(2)<<decimal;
-					cout<<" seconds"<<endl;
+					cout<<GREEN<<"PortSeeker done: 10,000 ports scanned in "<<fixed<<setprecision(2)<<decimal;
+					cout<<" seconds"<<RESET<<endl;
 
 				}else{
 					int verficador_a = strcmp(argv[1], "-sP");
@@ -1359,8 +1361,8 @@ int main(int argc, char *argv[]){
 							double httpget = duration.count();
 							double factore = pow(10, 2);
 							double decimal_a = round(httpget * factore) / factore;
-							cout<<"PortSeeker done: HTTP_GET in "<<fixed<<setprecision(2)<<decimal_a;
-							cout<<" seconds"<<endl;
+							cout<<GREEN<<"PortSeeker done: HTTP_GET in "<<fixed<<setprecision(2)<<decimal_a;
+							cout<<" seconds"<<RESET<<endl;
 						}else{
 							int verificador_c = strcmp(argv[1], "-httpsGET");
 							if(verificador_c==0){
@@ -1379,8 +1381,8 @@ int main(int argc, char *argv[]){
 								double httpsget = duration.count();
 								double fatores = pow(10, 2);
 								double decimal_b = round(httpsget * fatores) / fatores;
-								cout<<"PortSeeker done: HTTPS_GET in "<<fixed<<setprecision(2)<<decimal_b;
-								cout<<" seconds"<<endl;
+								cout<<GREEN<<"PortSeeker done: HTTPS_GET in "<<fixed<<setprecision(2)<<decimal_b;
+								cout<<" seconds"<<RESET<<endl;
 							}else{
 								int var = strcmp(argv[1], "-httpPOST");
 								if(var==0){
@@ -1404,8 +1406,8 @@ int main(int argc, char *argv[]){
 										double httpsget = duration.count();
 										double factores = pow(10, 2);
 										double decimal = round(httpsget * factores) / factores;
-										cout<<"PortSeeker done : HTTPSTATUSCODE in "<<fixed<<setprecision(2)<<decimal;
-										cout<<" seconds"<<endl;
+										cout<<GREEN<<"PortSeeker done : HTTPSTATUSCODE in "<<fixed<<setprecision(2)<<decimal;
+										cout<<" seconds"<<RESET<<endl;
 									}else{
 										int controlador = strcmp(argv[1], "-sS");
 										if(controlador==0){
@@ -1427,8 +1429,8 @@ int main(int argc, char *argv[]){
 											double httpsget = duration.count();
 											double caracol = pow(10, 2);
 											double valor = round(httpsget * caracol) / caracol;
-											cout<<"PortSeeker done: SilentScan in "<<fixed<<setprecision(2)<<caracol;
-											cout<<" seconds"<<endl;
+											cout<<GREEN<<"PortSeeker done: SilentScan in "<<fixed<<setprecision(2)<<caracol;
+											cout<<" seconds"<<RESET<<endl;
 										}
 									}
 								}
