@@ -8,6 +8,7 @@ Port Scanner, opensource and programmed in C++ for linux distros.
 
 ### Free Open-Source vulnerability scanner
 #### For arch based distros
+##You need to run this program with administrator permissions
 ```
 pacman -S curl
 g++ compile.cpp -o prtker -std=c++11 -lcurl
