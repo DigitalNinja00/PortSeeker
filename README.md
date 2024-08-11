@@ -1,4 +1,4 @@
-# PortSeeker version: 1.6
+# PortSeeker version: 1.7
 <center>
     <img src="IMG_0385.jpeg"><br>
     <img src="01.png">
@@ -35,6 +35,8 @@ sudo bash start.sh
 ## Improvements:
 
 ```
+>>> Http and https requests are returned
+>>> Now with new help menu with the "--help" option
 >>> Optimized code
 >>> new port version scanning function
 >>> New colors on console ***

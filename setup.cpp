@@ -1,3 +1,4 @@
+
 #include<iostream>
 #include<string.h>
 #include<stdio.h>
@@ -108,10 +109,17 @@ class Mess{
     	int numero;
     public:
     	void help_funtion(){
+        /*
+        int http = strcmp(argv[2], "--httpGET");
+        int https = strcmp(argv[2], "--httpsGET");
+        */
     		string var[]={"\033[1;31m!!!!!USE ROOT!!!!!",
     		"\033[0m==--Help list==",
-            "use : ./prtker <ADDRESS>",
-            "use : ./prtker <ADDRESS> -p <PORT>"
+            "use : ./prtker <ADDRESS> | Normal scanner",
+            "use : ./prtker <ADDRESS> -p <PORT> | Specific port scan",
+            "use : ./prtker <ADDRESS> -sV | Port version scan",
+            "use : ./prtker <ADDRESS> --httpGET | http get request",
+            "use : ./prtker <ADDRESS> --httpsGET | https get requests"
     	};
     		size_t main = sizeof(var)/sizeof(string);
     		for(int i=0; i<main;i++){
@@ -119,16 +127,16 @@ class Mess{
     		}
     	}
     	void version(){
-    		cout<<BLUE<<"PortSeeker version 1.6"<<endl;
+    		cout<<BLUE<<"PortSeeker version 1.7"<<endl;
     	}
     	void principal(){
-    		cout<<BLUE<<"Starting BasicScan PortSeeker 1.6"<<endl;;
+    		cout<<BLUE<<"Starting BasicScan PortSeeker 1.7"<<endl;;
     	}
     	void httpGET_scan(){
-    		cout<<BLUE<<"Starting HTTPGET PortSeeker 1.6"<<endl;
+    		cout<<BLUE<<"Starting HTTPGET PortSeeker 1.7"<<endl;
     	}
         void server_version(){
-            cout<<BLUE<<"Starting SERVERVERSION PortSeeker 1.6"<<endl;
+            cout<<BLUE<<"Starting SERVERVERSION PortSeeker 1.7"<<endl;
         }
     	void banner(){
     		system("python3 scripts_python/banner.py");
@@ -216,7 +224,15 @@ int main(int argc, char* argv[]){
     //detect_service("192.168.8.136", "4000");
     if(argc==2){
         if(strcmp(argv[1], "--version") == 0 ){
-            cout<<"PortSeeker VERSION 1.6"<<endl;
+            Mess colorama;
+            Mess* pip = &colorama;
+            pip->version();
+            return 0;
+        }
+        if(strcmp(argv[1], "--help") == 0 || strcmp(argv[1], "-h") == 0){
+            Mess locali;
+            Mess* loca = & locali;
+            loca -> help_funtion();
             return 0;
         }
         auto peticionGET = steady_clock::now();
