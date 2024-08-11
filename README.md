@@ -35,7 +35,7 @@ sudo bash start.sh
 ./prtker 192.168.0.1 --httpsGET --> https requests
 
 ```
-###INFO COMMANDS
+## info commands
 ```
 ./prtker --help
 ./prtker -h
