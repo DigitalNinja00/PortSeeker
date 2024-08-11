@@ -31,6 +31,15 @@ sudo bash start.sh
 ./prtker 192.168.0.1 ---> BasicScan
 ./prtker 192.168.0.1 -sV ---> Port Version Scan
 ./prtker 192.168.0.1 -p 80 ---> specific port
+./prtker 192.168.0.1 --httpGET --> http requests
+./prtker 192.168.0.1 --httpsGET --> https requests
+
+```
+###INFO COMMANDS
+```
+./prtker --help
+./prtker -h
+./prtker --version
 ```
 ## Improvements:
 
