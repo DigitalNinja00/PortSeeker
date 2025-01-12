@@ -1,4 +1,3 @@
-
 #include<iostream>
 #include<string.h>
 #include<stdio.h>
@@ -120,23 +119,37 @@ class Mess{
             "use : ./prtker <ADDRESS> -sV | Port version scan",
             "use : ./prtker <ADDRESS> --httpGET | http get request",
             "use : ./prtker <ADDRESS> --httpsGET | https get requests"
+            "use : ./prtker <ADDRESS> --arp | get macaddress",
+            "use : ./prtker <ADDRESS> --icmp | icmp request"
     	};
     		size_t main = sizeof(var)/sizeof(string);
     		for(int i=0; i<main;i++){
     			cout<<var[i]<<endl;
     		}
     	}
+        void icmp_principal(){
+            cout<<BLUE<<"Starting ICMP PortSeeker 1.8"<<endl;
+        }
+        void icmp_info(){
+            cout<<"./prtker <IPV4> --icmp"<<endl;
+        }
+        void arp_info(){
+            cout<<"./prtker <IPV4> --arp"<<endl;
+        }
     	void version(){
-    		cout<<BLUE<<"PortSeeker version 1.7"<<endl;
+    		cout<<BLUE<<"PortSeeker version 1.8"<<endl;
     	}
     	void principal(){
-    		cout<<BLUE<<"Starting BasicScan PortSeeker 1.7"<<endl;;
+    		cout<<BLUE<<"Starting BasicScan PortSeeker 1.8"<<endl;
     	}
     	void httpGET_scan(){
-    		cout<<BLUE<<"Starting HTTPGET PortSeeker 1.7"<<endl;
+    		cout<<BLUE<<"Starting HTTPGET PortSeeker 1.8"<<endl;
     	}
         void server_version(){
-            cout<<BLUE<<"Starting SERVERVERSION PortSeeker 1.7"<<endl;
+            cout<<BLUE<<"Starting SERVERVERSION PortSeeker 1.8"<<endl;
+        }
+        void server_arp(){
+            cout<<BLUE<<"Starting GETMACADRESS PortSeeker 1.8"<<endl;
         }
     	void banner(){
     		system("python3 scripts_python/banner.py");
@@ -160,6 +173,12 @@ private:
 	int var;
 	int var2;
 public:
+    int icmp_peticion(const char* direccion_remota){
+        stringstream V_ar;
+        V_ar<<"python3 scripts_python/icmp.py "<<direccion_remota;
+        system(V_ar.str().c_str());
+        return 0;
+    }
 	int getmacaddress(const char* direccionremota){
 		stringstream comando;
     	comando<<"echo \"\\e[0;31mmac address: \\e[1;33m$(/usr/sbin/arping -c 1 "<<direccionremota<<" | grep \"from\" | awk \'{print $4}\')\"";
@@ -235,6 +254,17 @@ int main(int argc, char* argv[]){
             loca -> help_funtion();
             return 0;
         }
+        if(strcmp(argv[1], "--arp") == 0){
+            Mess local;
+            Mess* lol = &local;
+            lol->arp_info();
+            return 0;
+        }
+        if(strcmp(argv[1], "--icmp") == 0){
+            Mess _UPDATED_;
+            Mess* __LOADER__ = &_UPDATED_;
+            __LOADER__->icmp_info();
+        }
         auto peticionGET = steady_clock::now();
         Mess ban;
         Mess* banner = &ban;
@@ -263,6 +293,45 @@ int main(int argc, char* argv[]){
         int nice = strcmp(argv[2], "-sV");
         int http = strcmp(argv[2], "--httpGET");
         int https = strcmp(argv[2], "--httpsGET");
+        int arp = strcmp(argv[2], "--arp");
+        int icmp = strcmp(argv[2], "--icmp");
+        if(icmp==0){
+            auto _CONTROL_ = steady_clock::now();
+            Mess _BANNER_; Mess* _BAN_ = &_BANNER_;
+            _BAN_->banner();
+            Mess Ratman; Mess* rATMAN = & Ratman;
+            rATMAN->icmp_principal();
+            Connections upx;
+            Connections* xpx = &upx;
+            xpx->icmp_peticion(argv[1]);
+            auto FINAL = steady_clock::now();
+            duration<double> duration = FINAL - _CONTROL_;
+            double argget = duration.count();
+            double factor = pow(10, 2);
+            double dimal = round(argget * factor) / factor;
+            cout<<GREEN<<"PortSeeker done: scan in "<<fixed<<setprecision(2)<<dimal;
+            cout<<" seconds"<<RESET<<endl;
+        }
+        if(arp==0){
+            auto controlador = steady_clock::now();
+            //ARP REQUESTS
+            Mess banner;
+            Mess* bann = &banner;
+            bann->banner();
+            Mess tar;
+            Mess* rat = &tar;
+            rat->server_arp();
+            Connections _A_;
+            Connections* _ARP = &_A_;
+            _ARP->getmacaddress(argv[1]);
+            auto final = steady_clock::now();
+            duration<double> duration = final - controlador;
+            double argget = duration.count();
+            double factor = pow(10, 2);
+            double dimal = round(argget * factor) / factor;
+            cout<<GREEN<<"PortSeeker done: scan in "<<fixed<<setprecision(2)<<dimal;
+            cout<<" seconds"<<RESET<<endl;
+        }
         if(very==0){
             cout<<"Specify a port for -p"<<endl;
         }

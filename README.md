@@ -1,4 +1,4 @@
-# PortSeeker version: 1.7
+# PortSeeker version: 1.8
 <center>
     <img src="IMG_0385.jpeg"><br>
     <img src="01.png">
@@ -33,7 +33,8 @@ sudo bash start.sh
 ./prtker 192.168.0.1 -p 80 ---> specific port
 ./prtker 192.168.0.1 --httpGET --> http requests
 ./prtker 192.168.0.1 --httpsGET --> https requests
-
+./prtker 192.168.0.1 --arp --> get mac address
+./prtker 192.168.0.1 --icmp --> icmp requests
 ```
 ## info commands
 ```
@@ -44,6 +45,8 @@ sudo bash start.sh
 ## Improvements:
 
 ```
+>>> New function for ICMP requests
+>>> New function to obtain mac address
 >>> Http and https requests are returned
 >>> Now with new help menu with the "--help" option
 >>> Optimized code
