@@ -118,17 +118,31 @@ class Mess{
             "use : ./prtker <ADDRESS> -p <PORT> | Specific port scan",
             "use : ./prtker <ADDRESS> -sV | Port version scan",
             "use : ./prtker <ADDRESS> --httpGET | http get request",
-            "use : ./prtker <ADDRESS> --httpsGET | https get requests"
+            "use : ./prtker <ADDRESS> --httpsGET | https get requests",
             "use : ./prtker <ADDRESS> --arp | get macaddress",
-            "use : ./prtker <ADDRESS> --icmp | icmp request"
+            "use : ./prtker <ADDRESS> --icmp | icmp request",
+            "use : ./prtker <ADDRESS> --osdetection | OS Detection",
+            "use : ./prtker <ADDRESS --CRAZYMODE | all in one (VERY NOISY)"
     	};
     		size_t main = sizeof(var)/sizeof(string);
     		for(int i=0; i<main;i++){
     			cout<<var[i]<<endl;
     		}
     	}
+        void crazy_principal(){
+            cout<<BLUE<<"Starting CRAZYMODE PortSeeker 1.9"<<endl;
+        }
+        void crazy_info(){
+            cout<<"./prtker <IPV4> --CRAZYMODE"<<endl;
+        }
+        void os_principal(){
+            cout<<BLUE<<"Starting OSDETECTION PortSeeker 1.9"<<endl;
+        }
+        void os_info(){
+            cout<<"./prtker <IPV4> --osdetection"<<endl;
+        }
         void icmp_principal(){
-            cout<<BLUE<<"Starting ICMP PortSeeker 1.8"<<endl;
+            cout<<BLUE<<"Starting ICMP PortSeeker 1.9"<<endl;
         }
         void icmp_info(){
             cout<<"./prtker <IPV4> --icmp"<<endl;
@@ -137,19 +151,19 @@ class Mess{
             cout<<"./prtker <IPV4> --arp"<<endl;
         }
     	void version(){
-    		cout<<BLUE<<"PortSeeker version 1.8"<<endl;
+    		cout<<BLUE<<"PortSeeker version 1.9"<<endl;
     	}
     	void principal(){
-    		cout<<BLUE<<"Starting BasicScan PortSeeker 1.8"<<endl;
+    		cout<<BLUE<<"Starting BasicScan PortSeeker 1.9"<<endl;
     	}
     	void httpGET_scan(){
-    		cout<<BLUE<<"Starting HTTPGET PortSeeker 1.8"<<endl;
+    		cout<<BLUE<<"Starting HTTPGET PortSeeker 1.9"<<endl;
     	}
         void server_version(){
-            cout<<BLUE<<"Starting SERVERVERSION PortSeeker 1.8"<<endl;
+            cout<<BLUE<<"Starting SERVERVERSION PortSeeker 1.9"<<endl;
         }
         void server_arp(){
-            cout<<BLUE<<"Starting GETMACADRESS PortSeeker 1.8"<<endl;
+            cout<<BLUE<<"Starting GETMACADRESS PortSeeker 1.9"<<endl;
         }
     	void banner(){
     		system("python3 scripts_python/banner.py");
@@ -173,6 +187,12 @@ private:
 	int var;
 	int var2;
 public:
+    int os_detection(const char* direccion_interna){
+        stringstream LOL;
+        LOL<<"bash bash_scripts/os.sh "<<direccion_interna;
+        system(LOL.str().c_str());
+        return 0;
+    }
     int icmp_peticion(const char* direccion_remota){
         stringstream V_ar;
         V_ar<<"python3 scripts_python/icmp.py "<<direccion_remota;
@@ -238,10 +258,36 @@ int char_intconverter(const char* str){
 	}
 	return numero_a;
 }
+
+const char* int_to_const_char(int number) {
+    try {
+        std::string str_number = std::to_string(number);
+        return str_number.c_str();
+    } catch (const std::invalid_argument& e) {
+        return "Invalid argument";
+    } catch (const std::out_of_range& e) {
+        return "Out of range";
+    } catch (...) {
+        return "Error";
+    }
+}
+
+
 int main(int argc, char* argv[]){
 //int detect_service(const char* hostname, const char* port){
     //detect_service("192.168.8.136", "4000");
     if(argc==2){
+        if(strcmp(argv[1], "--CRAZYMODE")==0){
+            Mess C;Mess* R = &C;
+            R->crazy_info();
+            return 0;
+        }
+        if(strcmp(argv[1], "--osdetection")==0){
+            Mess localo;
+            Mess* llave = &localo;
+            llave->os_info();
+            return 0;
+        }
         if(strcmp(argv[1], "--version") == 0 ){
             Mess colorama;
             Mess* pip = &colorama;
@@ -264,6 +310,7 @@ int main(int argc, char* argv[]){
             Mess _UPDATED_;
             Mess* __LOADER__ = &_UPDATED_;
             __LOADER__->icmp_info();
+            return 0;
         }
         auto peticionGET = steady_clock::now();
         Mess ban;
@@ -295,6 +342,55 @@ int main(int argc, char* argv[]){
         int https = strcmp(argv[2], "--httpsGET");
         int arp = strcmp(argv[2], "--arp");
         int icmp = strcmp(argv[2], "--icmp");
+        int os_det = strcmp(argv[2], "--osdetection");
+        int craz = strcmp(argv[2], "--CRAZYMODE");
+        if(craz==0){
+            auto _HTML = steady_clock::now();
+            Mess _CSS; Mess* XSS = &_CSS;
+            XSS->banner();
+            Mess hak; Mess* radio = &hak;
+            radio->crazy_principal();
+            cout<<YELLOW<<"PORT SCAN AND SERVER VERSION"<<RESET<<endl;
+            for(int x=0; x<=10000;x++){
+                int point = templa(argv[1], x);
+                if(point==0){
+                     stringstream con;
+                     con<<"bash ./bash_scripts/local.sh "<<argv[1]<<" "<<x;
+                     system(con.str().c_str());
+                }
+            }
+            Connections o;Connections* oo = &o;
+            cout<<YELLOW<<"ICMP REQUESTS"<<RESET<<endl;
+            oo->icmp_peticion(argv[1]);
+            Connections u; Connections* uu = &u;
+            cout<<YELLOW<<"OS DETECTION"<<RESET<<endl;
+            Connections xx; Connections*local = &xx;
+            local->os_detection(argv[1]);
+            auto _HTML2 = steady_clock::now();
+            duration<double> duration = _HTML2 - _HTML;
+            double argget = duration.count();
+            double factor = pow(10, 2);
+            double dimal = round(argget * factor) / factor;
+            cout<<GREEN<<"PortSeeker done: scan in "<<fixed<<setprecision(2)<<dimal;
+            cout<<" seconds"<<RESET<<endl;
+        }
+        if(os_det==0){
+            auto _INDEX = steady_clock::now();
+            Mess _LIC;
+            Mess* less = &_LIC;
+            less->banner();
+            Mess __LOCAL; Mess* Wsa =&__LOCAL;
+            Wsa->os_principal();
+            Connections aG;Connections* Ga = &aG;
+            Ga->os_detection(argv[1]);
+            auto __FINAL = steady_clock::now();
+            duration<double> duration = __FINAL - _INDEX;
+            double argget = duration.count();
+            double factor = pow(10, 2);
+            double dimal = round(argget * factor) / factor;
+            cout<<GREEN<<"PortSeeker done: scan in "<<fixed<<setprecision(2)<<dimal;
+            cout<<" seconds"<<RESET<<endl;
+        }
         if(icmp==0){
             auto _CONTROL_ = steady_clock::now();
             Mess _BANNER_; Mess* _BAN_ = &_BANNER_;
