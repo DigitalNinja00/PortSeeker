@@ -1,6 +1,6 @@
-# PortSeeker version: 1.9
+# PortSeeker version: 2.0
 <center>
-    <img src="IMG_0385.jpeg"><br>
+    <img src="logo.jpeg"><br>
     <img src="01.png">
     <img src="02.jpg">
 </center>
