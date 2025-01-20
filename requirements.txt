@@ -1,0 +1,4 @@
+scapy
+colorama
+asyncio
+bleak

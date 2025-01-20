@@ -8,5 +8,8 @@ sudo pacman -S gcc
 sudo pacman -S curl
 
 pip3 install scapy --break-system-packages
+pip3 install colorama --break-system-packages
+pip3 install asyncio --break-system-packages
+pip3 install bleak --break-system-packages
 
 g++ setup.cpp -o prtker -std=c++11 -lcurl

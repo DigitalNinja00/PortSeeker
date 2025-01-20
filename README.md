@@ -2,7 +2,7 @@
 <center>
     <img src="IMG_0385.jpeg"><br>
     <img src="01.png">
-    <img src="02.png">
+    <img src="02.jpg">
 </center>
 * 
 Port Scanner, opensource and programmed in C++ for linux distros.
@@ -52,6 +52,13 @@ sudo apt -y install python3-pip
 
 ```
 pip3 install scapy --break-system-packages
+pip3 install colorama --break-system-packages
+pip3 install asyncio --break-system-packages
+pip3 install bleak --break-system-packages
+```
+OR
+```
+pip3 install -r requirements.txt --break-system-packages
 ```
 ### COMPILE CODE
 ```
@@ -60,7 +67,7 @@ g++ setup.cpp -o prtker -std=c++11 -lcurl
 ### Commands
 ```
 !!!!!everything must be run as root!!!!
-
+################LAN NETWORK TOOLS###################
 ./prtker 192.168.0.1 ---> BasicScan
 ./prtker 192.168.0.1 -sV ---> Port Version Scan
 ./prtker 192.168.0.1 -p 80 ---> specific port
@@ -70,6 +77,9 @@ g++ setup.cpp -o prtker -std=c++11 -lcurl
 ./prtker 192.168.0.1 --icmp --> icmp requests
 ./prtker 192.168.0.1 --osdetection --> os detection
 ./prtker 192.168.0.1 --CRAZYMODE --> all in one
+#################BLUETOOTH TOOLS#####################
+./prtker --list-bluetooth --> list bluetooth devices
+./prtker <FF:FF:FF:FF:FF> --bluetooth-connect --> connect to a device
 ```
 ## info commands
 ```
@@ -80,6 +90,7 @@ g++ setup.cpp -o prtker -std=c++11 -lcurl
 ## Improvements:
 
 ```
+>>> New features for bluetooth
 >>> New function for ICMP requests
 >>> New function to obtain mac address
 >>> Http and https requests are returned

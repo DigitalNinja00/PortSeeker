@@ -122,27 +122,41 @@ class Mess{
             "use : ./prtker <ADDRESS> --arp | get macaddress",
             "use : ./prtker <ADDRESS> --icmp | icmp request",
             "use : ./prtker <ADDRESS> --osdetection | OS Detection",
-            "use : ./prtker <ADDRESS --CRAZYMODE | all in one (VERY NOISY)"
-    	};
+            "use : ./prtker <ADDRESS> --CRAZYMODE | all in one (VERY NOISY) ^^^",
+            "use : ./prtker --list-bluetooth | list bluetooth devices",
+            "use : ./prtker <MACADDRESS> --bluetooth-connect | Connection Bluetooth"
+            };
     		size_t main = sizeof(var)/sizeof(string);
     		for(int i=0; i<main;i++){
     			cout<<var[i]<<endl;
     		}
     	}
+        void Connection_bluetooth(){
+            cout<<BLUE<<"Starting BLUETOOTH CONNECT PortSeeker 2.0"<<endl;
+        }
+        void Connection_bluetooth_info(){
+            cout<<"./prtker <MACADDRESS> --bluetooth-connect"<<endl;
+        }
+        void bluetooth_list(){
+            cout<<BLUE<<"Starting BLUETOOTH LIST DEVICES PortSeeker 2.0"<<endl;
+        }
+        void bluettoh_info(){
+            cout<<"./prtker --list-bluetooth"<<endl;
+        }
         void crazy_principal(){
-            cout<<BLUE<<"Starting CRAZYMODE PortSeeker 1.9"<<endl;
+            cout<<BLUE<<"Starting CRAZYMODE PortSeeker 2.0"<<endl;
         }
         void crazy_info(){
             cout<<"./prtker <IPV4> --CRAZYMODE"<<endl;
         }
         void os_principal(){
-            cout<<BLUE<<"Starting OSDETECTION PortSeeker 1.9"<<endl;
+            cout<<BLUE<<"Starting OSDETECTION PortSeeker 2.0"<<endl;
         }
         void os_info(){
             cout<<"./prtker <IPV4> --osdetection"<<endl;
         }
         void icmp_principal(){
-            cout<<BLUE<<"Starting ICMP PortSeeker 1.9"<<endl;
+            cout<<BLUE<<"Starting ICMP PortSeeker 2.0"<<endl;
         }
         void icmp_info(){
             cout<<"./prtker <IPV4> --icmp"<<endl;
@@ -151,19 +165,19 @@ class Mess{
             cout<<"./prtker <IPV4> --arp"<<endl;
         }
     	void version(){
-    		cout<<BLUE<<"PortSeeker version 1.9"<<endl;
+    		cout<<BLUE<<"PortSeeker version 2.0"<<endl;
     	}
     	void principal(){
-    		cout<<BLUE<<"Starting BasicScan PortSeeker 1.9"<<endl;
+    		cout<<BLUE<<"Starting BasicScan PortSeeker 2.0"<<endl;
     	}
     	void httpGET_scan(){
-    		cout<<BLUE<<"Starting HTTPGET PortSeeker 1.9"<<endl;
+    		cout<<BLUE<<"Starting HTTPGET PortSeeker 2.0"<<endl;
     	}
         void server_version(){
-            cout<<BLUE<<"Starting SERVERVERSION PortSeeker 1.9"<<endl;
+            cout<<BLUE<<"Starting SERVERVERSION PortSeeker 2.0"<<endl;
         }
         void server_arp(){
-            cout<<BLUE<<"Starting GETMACADRESS PortSeeker 1.9"<<endl;
+            cout<<BLUE<<"Starting GETMACADRESS PortSeeker 2.0"<<endl;
         }
     	void banner(){
     		system("python3 scripts_python/banner.py");
@@ -187,6 +201,16 @@ private:
 	int var;
 	int var2;
 public:
+    int connected_bluetooth(string macaddress){
+        stringstream Jojo;
+        Jojo<<"python3 scripts_python/blue2.py -a "<<macaddress;
+        system(Jojo.str().c_str());
+        return 0;
+    }
+    int lister_bluetooth(){
+        system("python3 scripts_python/blue.py");
+        return 0;
+    }
     int os_detection(const char* direccion_interna){
         stringstream LOL;
         LOL<<"bash bash_scripts/os.sh "<<direccion_interna;
@@ -277,6 +301,28 @@ int main(int argc, char* argv[]){
 //int detect_service(const char* hostname, const char* port){
     //detect_service("192.168.8.136", "4000");
     if(argc==2){
+        if(strcmp(argv[1], "--bluetooth-connect")==0){
+            Mess kk;Mess* kok = &kk;
+            kok->Connection_bluetooth_info();
+            return 0;
+        }
+        if(strcmp(argv[1], "--list-bluetooth")==0){
+            Mess Nan;Mess* L = &Nan;
+            L->banner();
+            Mess Infanteria;Mess* Soldado = &Infanteria;
+            Soldado->bluetooth_list();
+            auto localitation = steady_clock::now();
+            Connections lOcal;Connections* cOnTROL = &lOcal;
+            cOnTROL->lister_bluetooth();
+            auto peticionGETFinal = steady_clock::now();
+            duration<double> duration = peticionGETFinal - localitation;
+            double httpget = duration.count();
+            double factore = pow(10, 2);
+            double decimal_a = round(httpget * factore) / factore;
+            cout<<GREEN<<"PortSeeker done: scan in "<<fixed<<setprecision(2)<<decimal_a;
+            cout<<" seconds"<<RESET<<endl;
+            return 0;
+        }
         if(strcmp(argv[1], "--CRAZYMODE")==0){
             Mess C;Mess* R = &C;
             R->crazy_info();
@@ -344,6 +390,23 @@ int main(int argc, char* argv[]){
         int icmp = strcmp(argv[2], "--icmp");
         int os_det = strcmp(argv[2], "--osdetection");
         int craz = strcmp(argv[2], "--CRAZYMODE");
+        int bluetooth = strcmp(argv[2], "--bluetooth-connect");
+        if(bluetooth==0){
+            Mess sql; Mess* sqli = &sql;
+            sqli->banner();
+            Mess mantainer; Mess* tain = &mantainer;
+            tain->Connection_bluetooth();
+            auto _HTML = steady_clock::now();
+            Connections ll; Connections* uu = &ll;
+            uu->connected_bluetooth(argv[1]);
+            auto __FINAL = steady_clock::now();
+            duration<double> duration = __FINAL - _HTML;
+            double argget = duration.count();
+            double factor = pow(10, 2);
+            double dimal = round(argget * factor) / factor;
+            cout<<GREEN<<"PortSeeker done: scan in "<<fixed<<setprecision(2)<<dimal;
+            cout<<" seconds"<<RESET<<endl;
+        }
         if(craz==0){
             auto _HTML = steady_clock::now();
             Mess _CSS; Mess* XSS = &_CSS;
