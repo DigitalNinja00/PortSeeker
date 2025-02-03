@@ -14,4 +14,8 @@ pip3 install asyncio --break-system-packages
 pip3 install bleak --break-system-packages
 echo "[+] Compilando fichero <setup.cpp>"
 
-g++ setup.cpp -o prtker -std=c++11 -lcurl
+g++ -c main.cpp                          
+g++ -c sockk.cpp
+g++ -c bluetooth.cpp
+g++ -c info.cpp
+g++ main.o sockk.o bluetooth.o info.o -o prtker -lcurl

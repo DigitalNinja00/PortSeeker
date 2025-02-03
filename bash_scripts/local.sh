@@ -26,10 +26,13 @@ else
         if [ "$2" -eq 80 ]; then
             version=$(echo "$resultado" | grep -i 'Version:')
             apache=$(echo "$resultado" | grep -i 'Apache')
+            nginx=$(echo "$resultado" | grep -i 'nginx')
             if [ -n "$version" ]; then
                 echo -e "${RED}>> TCP ${YELLOW}\\ open \\ ${RED}$2 ${GREEN}$version"
             elif [ -n "$apache" ]; then
                 echo -e "${RED}>> TCP ${YELLOW}\\ open \\ ${RED}$2 ${GREEN}$apache"
+            elif [ -n "$nginx" ]; then
+                echo -e "${RED}>> TCP ${YELLOW}\\ open \\ ${RED}$2 ${GREEN}$nginx"
             else
                 echo -e "${RED}>> TCP ${YELLOW}\\ open \\ ${RED}$2 ${GREEN}(versions not found)"
             fi
