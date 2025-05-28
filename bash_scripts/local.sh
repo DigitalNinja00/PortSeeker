@@ -18,7 +18,7 @@ resultado=$(echo -e "GET / HTTP/1.1\r\nHost: $1\r\n\r\n" | nc "$1" "$2" 2>/dev/n
 LONGITUD_MAXIMA=200
 
 if echo "$resultado" | grep -q "Connection refused"; then
-    echo "Puerto $2: connectio refused"
+    echo "Puerto $2: connection refused"
 elif [ -z "$resultado" ]; then
     :  # void
 else
